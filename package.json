@@ -7,6 +7,9 @@
   "author": "Jinyeong Jung <jinyeong32@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/cors": "^2.8.4",
+    "@types/helmet": "^0.0.43",
+    "@types/morgan": "^1.7.35",
     "@types/node": "^11.13.2",
     "nodemon": "^1.18.11",
     "ts-node": "^8.0.3",
@@ -15,5 +18,11 @@
   },
   "scripts": {
     "dev": "cd src && nodemon --exec ts-node index.ts -e ts,graphql"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "graphql-yoga": "^1.17.4",
+    "helmet": "^3.16.0",
+    "morgan": "^1.9.1"
   }
 }
