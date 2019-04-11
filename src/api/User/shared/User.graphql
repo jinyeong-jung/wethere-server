@@ -11,10 +11,10 @@ type User {
   profilePhoto: String
   lastLat: Float
   lastLng: Float
-  feeds: [Feed]
-  chats: [Chat]
-  messages: [Message]
-  couple: Couple
-  Comments: [Comment]
+  # feeds: [Feed]
+  # chats: [Chat]
+  # messages: [Message]
+  # couple: Couple
+  # Comments: [Comment]
   createdAt: String!
 }
