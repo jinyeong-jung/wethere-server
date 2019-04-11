@@ -1,0 +1,20 @@
+type User {
+  id: Int!
+  username: String!
+  password: String!
+  phoneNumber: String!
+  verifiedPhoneNumber: Boolean!
+  nickname: String!
+  gender: String!
+  birth: String
+  status: String
+  profilePhoto: String
+  lastLat: Float
+  lastLng: Float
+  feeds: [Feed]
+  chats: [Chat]
+  messages: [Message]
+  couple: Couple
+  Comments: [Comment]
+  createdAt: String!
+}
