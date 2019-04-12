@@ -1,0 +1,7 @@
+type Comment {
+  id: Int!
+  feed: Feed!
+  text: String!
+  user: User!
+  createdAt: String!
+}

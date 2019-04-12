@@ -1,6 +1,9 @@
 type Feed {
   id: Int!
+  user: User!
   text: String!
   feedPicture: String
+  comments: [Comment]
+  place: Place
   createdAt: String!
 }

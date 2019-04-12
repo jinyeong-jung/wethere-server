@@ -6,9 +6,14 @@ import {
   Column,
   CreateDateColumn,
   BeforeInsert,
-  BeforeUpdate
+  BeforeUpdate,
+  OneToMany,
+  ManyToOne
 } from "typeorm";
 import { genderType } from "../types/types";
+import Feed from "./Feed";
+import Couple from "./Couple";
+import Comment from "./Comment";
 
 const BCRYPT_ROUNDS = 10;
 
@@ -62,6 +67,18 @@ class User extends BaseEntity {
 
   @Column({ type: "double precision", nullable: true, default: 0 })
   lastLng: number;
+
+  @OneToMany(type => Feed, feed => feed.user)
+  feeds: Feed[];
+
+  @ManyToOne(type => Couple, couple => couple.partnerOne)
+  coupleForPartnerOne: Couple;
+
+  @ManyToOne(type => Couple, couple => couple.partnerTwo)
+  coupleForPartnerTwo: Couple;
+
+  @OneToMany(type => Comment, comment => comment.user)
+  comments: Comment[];
 
   @CreateDateColumn()
   createdAt: string;

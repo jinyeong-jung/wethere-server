@@ -3,13 +3,20 @@ import {
   BaseEntity,
   PrimaryGeneratedColumn,
   Column,
-  CreateDateColumn
+  CreateDateColumn,
+  ManyToOne,
+  OneToMany
 } from "typeorm";
+import Couple from "./Couple";
+import Feed from "./Feed";
 
 @Entity()
 class Place extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @ManyToOne(type => Couple, couple => couple.places)
+  couple: Couple;
 
   @Column({ type: "text" })
   name: string;
@@ -25,6 +32,9 @@ class Place extends BaseEntity {
 
   @Column({ type: "boolean", default: false })
   isFav: boolean;
+
+  @OneToMany(type => Feed, feed => feed.place)
+  feeds: Feed[];
 
   @CreateDateColumn()
   createdAt: string;

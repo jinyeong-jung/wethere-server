@@ -11,5 +11,9 @@ type User {
   profilePhoto: String
   lastLat: Float
   lastLng: Float
+  feeds: [Feed]
+  coupleForPartnerOne: Couple
+  coupleForPartnerTwo: Couple
+  comments: [Comment]
   createdAt: String!
 }

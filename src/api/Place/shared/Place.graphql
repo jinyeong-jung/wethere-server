@@ -1,9 +1,11 @@
 type Place {
   id: Int!
+  couple: Couple!
   name: String!
   lat: Float!
   lng: Float!
   address: String!
   isFav: Boolean!
+  feeds: [Feed]
   createdAt: String!
 }

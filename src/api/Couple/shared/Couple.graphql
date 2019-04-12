@@ -1,5 +1,9 @@
 type Couple {
   id: Int!
+  partnerOne: User!
+  partnerTwo: User!
   firstDate: String
+  chat: Chat
+  places: [Place]
   createdAt: String!
 }
