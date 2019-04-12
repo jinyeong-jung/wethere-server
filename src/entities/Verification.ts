@@ -3,7 +3,8 @@ import {
   BaseEntity,
   PrimaryGeneratedColumn,
   Column,
-  CreateDateColumn
+  CreateDateColumn,
+  BeforeInsert
 } from "typeorm";
 
 @Entity()
@@ -22,6 +23,11 @@ class Verification extends BaseEntity {
 
   @CreateDateColumn()
   createdAt: string;
+
+  @BeforeInsert()
+  createKey(): void {
+    this.key = Math.floor(Math.random() * 1000000).toString();
+  }
 }
 
 export default Verification;
