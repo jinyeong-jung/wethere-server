@@ -1,0 +1,5 @@
+type Couple {
+  id: Int!
+  firstDate: String
+  createdAt: String!
+}

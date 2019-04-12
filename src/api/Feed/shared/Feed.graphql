@@ -1,0 +1,6 @@
+type Feed {
+  id: Int!
+  text: String!
+  feedPicture: String
+  createdAt: String!
+}
