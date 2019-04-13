@@ -1,3 +1,67 @@
+type Chat {
+  id: Int!
+  messages: [Message]
+  couple: Couple!
+  createdAt: String!
+}
+
+type Message {
+  id: Int!
+  text: String!
+  chat: Chat!
+  createdAt: String!
+}
+
+type Comment {
+  id: Int!
+  feed: Feed!
+  text: String!
+  user: User!
+  createdAt: String!
+}
+
+type Couple {
+  id: Int!
+  partnerOne: User!
+  partnerTwo: User!
+  firstDate: String
+  chat: Chat
+  places: [Place]
+  createdAt: String!
+}
+
+type Feed {
+  id: Int!
+  user: User!
+  text: String!
+  feedPicture: String
+  comments: [Comment]
+  place: Place
+  createdAt: String!
+}
+
+type Place {
+  id: Int!
+  couple: Couple!
+  name: String!
+  lat: Float!
+  lng: Float!
+  address: String!
+  isFav: Boolean!
+  feeds: [Feed]
+  createdAt: String!
+}
+
+type GetMyProfileResponse {
+  ok: Boolean!
+  error: String
+  user: User
+}
+
+type Query {
+  GetMyProfile: GetMyProfileResponse!
+}
+
 type User {
   id: Int!
   username: String!
@@ -11,7 +75,21 @@ type User {
   profilePhoto: String
   lastLat: Float
   lastLng: Float
+  feeds: [Feed]
+  coupleForPartnerOne: Couple
+  coupleForPartnerTwo: Couple
+  comments: [Comment]
   createdAt: String!
+}
+
+type SignUpStartResponse {
+  ok: Boolean!
+  error: String
+  token: String
+}
+
+type Mutation {
+  SignUpStart(username: String!, password: String!, nickname: String!, gender: String!, phoneNumber: String!): SignUpStartResponse!
 }
 
 type Verification {

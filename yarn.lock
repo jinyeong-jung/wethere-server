@@ -1451,6 +1451,17 @@ graphql-to-typescript@^0.1.2:
     graphql-subscriptions "^0.3.1"
     graphql-tools "^0.10.1"
 
+graphql-tools@4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/graphql-tools/-/graphql-tools-4.0.3.tgz#23b5cb52c519212b1b2e4630a361464396ad264b"
+  integrity sha512-NNZM0WSnVLX1zIMUxu7SjzLZ4prCp15N5L2T2ro02OVyydZ0fuCnZYRnx/yK9xjGWbZA0Q58yEO//Bv/psJWrg==
+  dependencies:
+    apollo-link "^1.2.3"
+    apollo-utilities "^1.0.1"
+    deprecated-decorator "^0.1.6"
+    iterall "^1.1.3"
+    uuid "^3.1.0"
+
 graphql-tools@^0.10.1:
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/graphql-tools/-/graphql-tools-0.10.1.tgz#274aa338d50b1c0b3ed6936eafd8ed3a19ed1828"
