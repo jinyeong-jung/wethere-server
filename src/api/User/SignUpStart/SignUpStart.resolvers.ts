@@ -3,11 +3,12 @@ import {
   SignUpStartMutationArgs,
   SignUpStartResponse
 } from "../../../types/graph";
-import User from "src/entities/User";
+import User from "../../../entities/User";
+import Verification from "../../../entities/Verification";
 
 const resolvers: Resolvers = {
   Mutation: {
-    SignUp: async (
+    SignUpStart: async (
       _,
       args: SignUpStartMutationArgs
     ): Promise<SignUpStartResponse> => {
@@ -20,6 +21,21 @@ const resolvers: Resolvers = {
           const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
           if (passwordRegex.test(password)) {
             // #3. start phone verification
+            const existingVerification = await Verification.findOne({
+              payload: phoneNumber
+            });
+            if (existingVerification) {
+              existingVerification.remove();
+            }
+            const newVerification = await Verification.create({
+              payload: phoneNumber
+            }).save();
+            console.log(newVerification);
+            return {
+              ok: true,
+              error: null,
+              token: "인증번호를 보냈습니다. 확인해주세요."
+            };
           } else {
             return {
               ok: false,
