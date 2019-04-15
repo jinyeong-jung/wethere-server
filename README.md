@@ -10,7 +10,7 @@ Server for the chat service for couples named "We There" made with GraphQL, Type
 - [x] Sign Up (Complete Phone Number Verification)
 - [ ] Sign In (username / password)
 - [x] Facebook Login
-- [ ] Google Login
+- [x] Google Login
 - [ ] Kakao Login
 - [ ] Naver Login
 

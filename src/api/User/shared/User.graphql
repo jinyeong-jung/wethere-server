@@ -5,6 +5,7 @@ type User {
   phoneNumber: String
   verifiedPhoneNumber: Boolean!
   facebookId: String
+  googleId: String
   nickname: String
   gender: String
   birth: String

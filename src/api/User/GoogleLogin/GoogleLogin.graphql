@@ -1,0 +1,13 @@
+type GoogleLoginResponse {
+  ok: Boolean!
+  error: String
+  token: String
+}
+
+type Mutation {
+  GoogleLogin(
+    googleId: String!
+    name: String!
+    imageUrl: String
+  ): GoogleLoginResponse!
+}
