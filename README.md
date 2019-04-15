@@ -6,8 +6,8 @@ Server for the chat service for couples named "We There" made with GraphQL, Type
 
 ### Public Resolvers:
 
-- [ ] Sign Up (Start Phone Number Verification)
-- [ ] Sign Up (Complete Phone Number Verification)
+- [x] Sign Up (Start Phone Number Verification)
+- [x] Sign Up (Complete Phone Number Verification)
 - [ ] Sign In (username / password)
 - [ ] Facebook Login
 - [ ] Google Login

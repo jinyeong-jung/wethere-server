@@ -82,13 +82,20 @@ type User {
   createdAt: String!
 }
 
-type SignUpStartResponse {
+type SignUpEndResponse {
   ok: Boolean!
   error: String
+  token: String
 }
 
 type Mutation {
+  SignUpEnd(phoneNumber: String!, key: String!): SignUpEndResponse!
   SignUpStart(username: String!, password: String!, phoneNumber: String!): SignUpStartResponse!
+}
+
+type SignUpStartResponse {
+  ok: Boolean!
+  error: String
 }
 
 type Verification {

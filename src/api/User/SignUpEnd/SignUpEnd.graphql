@@ -1,0 +1,9 @@
+type SignUpEndResponse {
+  ok: Boolean!
+  error: String
+  token: String
+}
+
+type Mutation {
+  SignUpEnd(phoneNumber: String!, key: String!): SignUpEndResponse!
+}
