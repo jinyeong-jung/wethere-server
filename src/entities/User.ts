@@ -40,6 +40,9 @@ class User extends BaseEntity {
   @Column({ type: "text", nullable: true })
   googleId: string;
 
+  @Column({ type: "text", nullable: true })
+  kakaoId: string;
+
   @Column({ type: "text", nullable: true, default: "새로 태어난 자" })
   nickname: string;
 

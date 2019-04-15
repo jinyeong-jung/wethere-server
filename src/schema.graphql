@@ -61,6 +61,7 @@ type FacebookLoginResponse {
 type Mutation {
   FacebookLogin(facebookId: String!, name: String!): FacebookLoginResponse!
   GoogleLogin(googleId: String!, name: String!, imageUrl: String): GoogleLoginResponse!
+  KakaoLogin(kakaoId: String!, nickname: String!, thumbnail: String): KakaoLoginResponse!
   SignUpEnd(phoneNumber: String!, key: String!): SignUpEndResponse!
   SignUpStart(username: String!, password: String!, phoneNumber: String!): SignUpStartResponse!
 }
@@ -76,6 +77,12 @@ type Query {
 }
 
 type GoogleLoginResponse {
+  ok: Boolean!
+  error: String
+  token: String
+}
+
+type KakaoLoginResponse {
   ok: Boolean!
   error: String
   token: String

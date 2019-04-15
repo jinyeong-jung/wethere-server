@@ -1,0 +1,13 @@
+type KakaoLoginResponse {
+  ok: Boolean!
+  error: String
+  token: String
+}
+
+type Mutation {
+  KakaoLogin(
+    kakaoId: String!
+    nickname: String!
+    thumbnail: String
+  ): KakaoLoginResponse!
+}
