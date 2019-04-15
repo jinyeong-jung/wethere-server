@@ -22,17 +22,20 @@ class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: "text" })
+  @Column({ type: "text", nullable: true })
   username: string;
 
-  @Column({ type: "text" })
+  @Column({ type: "text", nullable: true })
   password: string;
 
-  @Column({ type: "text" })
+  @Column({ type: "text", nullable: true })
   phoneNumber: string;
 
   @Column({ type: "boolean", default: false })
   verifiedPhoneNumber: boolean;
+
+  @Column({ type: "text", nullable: true })
+  facebookId: string;
 
   @Column({ type: "text", nullable: true, default: "새로 태어난 자" })
   nickname: string;

@@ -52,6 +52,18 @@ type Place {
   createdAt: String!
 }
 
+type FacebookLoginResponse {
+  ok: Boolean!
+  error: String
+  token: String
+}
+
+type Mutation {
+  FacebookLogin(facebookId: String!, name: String!): FacebookLoginResponse!
+  SignUpEnd(phoneNumber: String!, key: String!): SignUpEndResponse!
+  SignUpStart(username: String!, password: String!, phoneNumber: String!): SignUpStartResponse!
+}
+
 type GetMyProfileResponse {
   ok: Boolean!
   error: String
@@ -64,10 +76,11 @@ type Query {
 
 type User {
   id: Int!
-  username: String!
-  password: String!
-  phoneNumber: String!
+  username: String
+  password: String
+  phoneNumber: String
   verifiedPhoneNumber: Boolean!
+  facebookId: String
   nickname: String
   gender: String
   birth: String
@@ -86,11 +99,6 @@ type SignUpEndResponse {
   ok: Boolean!
   error: String
   token: String
-}
-
-type Mutation {
-  SignUpEnd(phoneNumber: String!, key: String!): SignUpEndResponse!
-  SignUpStart(username: String!, password: String!, phoneNumber: String!): SignUpStartResponse!
 }
 
 type SignUpStartResponse {

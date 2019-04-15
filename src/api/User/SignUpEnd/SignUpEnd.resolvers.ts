@@ -31,7 +31,7 @@ const resolvers: Resolvers = {
       } catch (error) {
         return {
           ok: false,
-          error,
+          error: error.message,
           token: null
         };
       }
@@ -57,7 +57,7 @@ const resolvers: Resolvers = {
       } catch (error) {
         return {
           ok: false,
-          error,
+          error: error.message,
           token: null
         };
       }

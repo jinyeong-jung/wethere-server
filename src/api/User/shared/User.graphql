@@ -1,9 +1,10 @@
 type User {
   id: Int!
-  username: String!
-  password: String!
-  phoneNumber: String!
+  username: String
+  password: String
+  phoneNumber: String
   verifiedPhoneNumber: Boolean!
+  facebookId: String
   nickname: String
   gender: String
   birth: String
