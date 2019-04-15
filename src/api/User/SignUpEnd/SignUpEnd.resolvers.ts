@@ -24,15 +24,13 @@ const resolvers: Resolvers = {
         } else {
           return {
             ok: false,
-            error: "인증번호를 다시 확인해주세요.",
-            token: null
+            error: "인증번호를 다시 확인해주세요."
           };
         }
       } catch (error) {
         return {
           ok: false,
-          error: error.message,
-          token: null
+          error: error.message
         };
       }
 
@@ -45,20 +43,17 @@ const resolvers: Resolvers = {
         } else {
           return {
             ok: false,
-            error: "핸드폰 번호를 인증해주세요.",
-            token: null
+            error: "핸드폰 번호를 인증해주세요."
           };
         }
         return {
           ok: true,
-          error: null,
-          token: "아직 준비중입니다."
+          error: null
         };
       } catch (error) {
         return {
           ok: false,
-          error: error.message,
-          token: null
+          error: error.message
         };
       }
     }
