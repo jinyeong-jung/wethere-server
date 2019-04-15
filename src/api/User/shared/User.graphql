@@ -4,8 +4,8 @@ type User {
   password: String!
   phoneNumber: String!
   verifiedPhoneNumber: Boolean!
-  nickname: String!
-  gender: String!
+  nickname: String
+  gender: String
   birth: String
   status: String
   profilePhoto: String

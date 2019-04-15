@@ -68,8 +68,8 @@ type User {
   password: String!
   phoneNumber: String!
   verifiedPhoneNumber: Boolean!
-  nickname: String!
-  gender: String!
+  nickname: String
+  gender: String
   birth: String
   status: String
   profilePhoto: String
@@ -85,11 +85,10 @@ type User {
 type SignUpStartResponse {
   ok: Boolean!
   error: String
-  token: String
 }
 
 type Mutation {
-  SignUpStart(username: String!, password: String!, nickname: String!, gender: String!, phoneNumber: String!): SignUpStartResponse!
+  SignUpStart(username: String!, password: String!, phoneNumber: String!): SignUpStartResponse!
 }
 
 type Verification {

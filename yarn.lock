@@ -2178,7 +2178,7 @@ lodash.once@^4.0.0:
   resolved "https://registry.yarnpkg.com/lodash.once/-/lodash.once-4.1.1.tgz#0dd3971213c7c56df880977d504c88fb471a97ac"
   integrity sha1-DdOXEhPHxW34gJd9UEyI+0cal6w=
 
-lodash@^4.17.11, lodash@^4.17.4, lodash@^4.3.0:
+lodash@^4.17.10, lodash@^4.17.4, lodash@^4.3.0:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
@@ -3013,7 +3013,7 @@ repeat-string@^1.6.1:
   resolved "https://registry.yarnpkg.com/repeat-string/-/repeat-string-1.6.1.tgz#8dcae470e1c88abc2d600fff4a776286da75e637"
   integrity sha1-jcrkcOHIirwtYA//Sndihtp15jc=
 
-request@^2.81.0, request@^2.88.0:
+request@^2.81.0, request@^2.87.0:
   version "2.88.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.88.0.tgz#9c2fca4f7d35b592efe57c7f0a55e81052124fef"
   integrity sha512-NAqBSrijGLZdM0WZNsInLJpkJokL72XYjUpnB0iwsRgxh7dB6COrHnTBNwN0E+lHDAJzu7kLAkDeY08z2/A0hg==
@@ -3544,18 +3544,18 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
   integrity sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=
 
-twilio@^3.30.1:
-  version "3.30.1"
-  resolved "https://registry.yarnpkg.com/twilio/-/twilio-3.30.1.tgz#f30ab824e8b1c9ed7f90d719b8d2cd967952c4e1"
-  integrity sha512-4QUcQXe1ktDy1koNIuPcV6/dapTmg/wDOsflEwNim+cwH8JdvfiBHo3GvFuOdIWzy89wV0fkGKc0/BylSj3oaQ==
+twilio@3.27.1:
+  version "3.27.1"
+  resolved "https://registry.yarnpkg.com/twilio/-/twilio-3.27.1.tgz#8a1268b00b15f5d7db38ad4029313d33e6e330b2"
+  integrity sha512-KZofKiavjIONUPMz0YVSPKqIE/wqrYiSnRhqKP+1L4TFiY/xuD2jc7tL/MPLuu4gcZsxoAj2HOfTtt3aVg6d1A==
   dependencies:
     "@types/express" "^4.11.1"
     deprecate "1.0.0"
     jsonwebtoken "^8.1.0"
-    lodash "^4.17.11"
+    lodash "^4.17.10"
     moment "2.19.3"
     q "2.0.x"
-    request "^2.88.0"
+    request "^2.87.0"
     rootpath "0.1.2"
     scmp "2.0.0"
     xmlbuilder "9.0.1"

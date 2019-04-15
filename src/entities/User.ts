@@ -34,10 +34,15 @@ class User extends BaseEntity {
   @Column({ type: "boolean", default: false })
   verifiedPhoneNumber: boolean;
 
-  @Column({ type: "text" })
+  @Column({ type: "text", nullable: true, default: "새로 태어난 자" })
   nickname: string;
 
-  @Column({ type: "text", enum: ["MALE", "FEMALE"], default: "MALE" })
+  @Column({
+    type: "text",
+    enum: ["MALE", "FEMALE"],
+    default: "MALE",
+    nullable: true
+  })
   gender: genderType;
 
   @Column({ type: "text", nullable: true })
