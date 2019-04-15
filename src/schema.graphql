@@ -62,6 +62,7 @@ type Mutation {
   FacebookLogin(facebookId: String!, name: String!): FacebookLoginResponse!
   GoogleLogin(googleId: String!, name: String!, imageUrl: String): GoogleLoginResponse!
   KakaoLogin(kakaoId: String!, nickname: String!, thumbnail: String): KakaoLoginResponse!
+  NaverLogin(naverId: String!, nickname: String!, imageUrl: String): NaverLoginResponse!
   SignUpEnd(phoneNumber: String!, key: String!): SignUpEndResponse!
   SignUpStart(username: String!, password: String!, phoneNumber: String!): SignUpStartResponse!
 }
@@ -88,6 +89,12 @@ type KakaoLoginResponse {
   token: String
 }
 
+type NaverLoginResponse {
+  ok: Boolean!
+  error: String
+  token: String
+}
+
 type User {
   id: Int!
   username: String
@@ -96,6 +103,8 @@ type User {
   verifiedPhoneNumber: Boolean!
   facebookId: String
   googleId: String
+  kakaoId: String
+  naverId: String
   nickname: String
   gender: String
   birth: String

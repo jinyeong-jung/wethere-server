@@ -1,0 +1,13 @@
+type NaverLoginResponse {
+  ok: Boolean!
+  error: String
+  token: String
+}
+
+type Mutation {
+  NaverLogin(
+    naverId: String!
+    nickname: String!
+    imageUrl: String
+  ): NaverLoginResponse!
+}

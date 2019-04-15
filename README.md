@@ -12,7 +12,7 @@ Server for the chat service for couples named "We There" made with GraphQL, Type
 - [x] Facebook Login
 - [x] Google Login
 - [x] Kakao Login
-- [ ] Naver Login
+- [x] Naver Login
 
 ---
 
