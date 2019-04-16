@@ -1,6 +1,7 @@
 import { Resolvers } from "src/types/resolvers";
 import { NaverLoginMutationArgs, NaverLoginResponse } from "src/types/graph";
 import User from "../../../entities/User";
+import createJWT from "../../../utils/createJWT";
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -14,10 +15,11 @@ const resolvers: Resolvers = {
       try {
         const existingUser = await User.findOne({ naverId });
         if (existingUser) {
+          const token = createJWT(existingUser.id);
           return {
             ok: true,
             error: null,
-            token: "아직 준비중입니다 (이미 존재)."
+            token
           };
         }
       } catch (error) {
@@ -39,10 +41,11 @@ const resolvers: Resolvers = {
           user.profilePhoto = imageUrl;
         }
         await user.save();
+        const token = createJWT(user.id);
         return {
           ok: true,
           error: null,
-          token: "아직 준비중입니다 (유저 생성)."
+          token
         };
       } catch (error) {
         return {

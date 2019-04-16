@@ -4,6 +4,7 @@ import {
   FacebookLoginResponse
 } from "../../../types/graph";
 import User from "../../../entities/User";
+import createJWT from "src/utils/createJWT";
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -17,10 +18,11 @@ const resolvers: Resolvers = {
       try {
         const existingUser = await User.findOne({ facebookId });
         if (existingUser) {
+          const token = createJWT(existingUser.id);
           return {
             ok: true,
             error: null,
-            token: "아직 준비중입니다 (이미 존재)."
+            token
           };
         }
       } catch (error) {
@@ -33,15 +35,16 @@ const resolvers: Resolvers = {
 
       //   create a new user
       try {
-        await User.create({
+        const user = await User.create({
           facebookId,
           nickname: name,
           profilePhoto: `http://graph.facebook.com/${facebookId}/picture?type=square`
         }).save();
+        const token = createJWT(user.id);
         return {
           ok: true,
           error: null,
-          token: "아직 준비중입니다 (유저 생성)."
+          token
         };
       } catch (error) {
         return {

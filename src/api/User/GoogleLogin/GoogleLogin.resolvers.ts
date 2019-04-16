@@ -4,6 +4,7 @@ import {
   GoogleLoginResponse
 } from "../../../types/graph";
 import User from "../../../entities/User";
+import createJWT from "src/utils/createJWT";
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -17,10 +18,11 @@ const resolvers: Resolvers = {
       try {
         const existingUser = await User.findOne({ googleId });
         if (existingUser) {
+          const token = createJWT(existingUser.id);
           return {
             ok: true,
             error: null,
-            token: "아직 준비중입니다 (이미 존재)."
+            token
           };
         }
       } catch (error) {
@@ -42,10 +44,11 @@ const resolvers: Resolvers = {
           user.profilePhoto = imageUrl;
         }
         await user.save();
+        const token = createJWT(user.id);
         return {
           ok: true,
           error: null,
-          token: "아직 준비중입니다 (유저 생성)."
+          token
         };
       } catch (error) {
         return {

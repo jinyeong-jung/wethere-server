@@ -1,6 +1,7 @@
 import { Resolvers } from "src/types/resolvers";
 import { LoginMutationArgs, LoginResponse } from "../../../types/graph";
 import User from "../../../entities/User";
+import createJWT from "src/utils/createJWT";
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -20,10 +21,11 @@ const resolvers: Resolvers = {
         }
         const checkPassword = user.comparePassword(password);
         if (checkPassword) {
+          const token = createJWT(user.id);
           return {
             ok: true,
             error: null,
-            token: "아직 준비중입니다."
+            token
           };
         } else {
           return {

@@ -18,7 +18,7 @@ Server for the chat service for couples named "We There" made with GraphQL, Type
 
 ### Authentication:
 
-- [ ] Generate JWT
+- [x] Generate JWT
 - [ ] Verify JWT
 
 ---
