@@ -4,7 +4,7 @@ import {
   GoogleLoginResponse
 } from "../../../types/graph";
 import User from "../../../entities/User";
-import createJWT from "src/utils/createJWT";
+import createJWT from "../../../utils/createJWT";
 
 const resolvers: Resolvers = {
   Mutation: {

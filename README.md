@@ -19,16 +19,16 @@ Server for the chat service for couples named "We There" made with GraphQL, Type
 ### Authentication:
 
 - [x] Generate JWT
-- [ ] Verify JWT
+- [x] Verify JWT
 
 ---
 
 ### Private Resolvers:
 
+- [x] Get My Profile
+- [ ] Update My Profile
 - [ ] Request Couple Verification
 - [ ] Complete Couple Verification
-- [ ] Get My Profile
-- [ ] Update My Profile
 - [ ] Report Loacation
 - [ ] Subscribe to Partner Location
 - [ ] Add Feed
