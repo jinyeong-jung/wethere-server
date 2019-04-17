@@ -1,10 +1,13 @@
 import { Resolvers } from "../../../types/resolvers";
 import privateResolver from "../../../utils/privateResolver";
-import User from "../../../entities/User";
 import {
   RequestCoupleVerificationMutationArgs,
   RequestCoupleVerificationResponse
 } from "../../../types/graph";
+import User from "../../../entities/User";
+import Couple from "../../../entities/Couple";
+import CoupleVerification from "../../../entities/CoupleVerification";
+import { sendCoupleVerificationSMS } from "../../../utils/sendSMS";
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -18,12 +21,53 @@ const resolvers: Resolvers = {
         const { partnerPhoneNumber } = args;
         try {
           // #1. check if the user already has a verified couple
-          // couple -> partnerOne.id === user.id || partnerTwo.id === user.id
-          // couple -> verified === true
-          // #2. check if existing couple verification exists (remove)
-          // #3. create a new couple verification
-          // #4. create a new couple
-          // #5. send message w/ verification code to partner phone number
+          const existingCoupleOne = await Couple.findOne({
+            id: user.coupleForPartnerOneId,
+            verified: true
+          });
+          const existingCoupleTwo = await Couple.findOne({
+            id: user.coupleForPartnerTwoId,
+            verified: true
+          });
+          if (existingCoupleOne || existingCoupleTwo) {
+            return {
+              ok: false,
+              error: "이미 커플로 등록되어 있습니다."
+            };
+          } else {
+            // #2. check if existing couple verification exists (remove)
+            const existingCoupleVerification = await CoupleVerification.findOne(
+              {
+                payload: partnerPhoneNumber
+              }
+            );
+            if (existingCoupleVerification) {
+              existingCoupleVerification.remove();
+            }
+
+            // #3. create a new couple verification
+            const newCoupleVerification = await CoupleVerification.create({
+              payload: partnerPhoneNumber
+            }).save();
+
+            // #4. create a new couple
+            const newCouple = await Couple.create({
+              partnerOneId: user.id,
+              partnerOne: user
+            }).save();
+            user.coupleForPartnerOneId = newCouple.id;
+            await user.save();
+
+            // #5. send message w/ verification code to partner phone number
+            await sendCoupleVerificationSMS(
+              newCoupleVerification.key,
+              newCoupleVerification.payload
+            );
+            return {
+              ok: true,
+              error: null
+            };
+          }
         } catch (error) {
           return {
             ok: false,

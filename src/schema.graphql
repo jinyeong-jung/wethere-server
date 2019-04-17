@@ -40,8 +40,10 @@ type Mutation {
 type Couple {
   id: Int!
   verified: Boolean!
+  partnerOneId: Int
   partnerOne: User!
-  partnerTwo: User!
+  partnerTwoId: Int
+  partnerTwo: User
   firstDate: String
   chat: Chat
   places: [Place]
@@ -136,7 +138,9 @@ type User {
   lastLat: Float
   lastLng: Float
   feeds: [Feed]
+  coupleForPartnerOneId: Int
   coupleForPartnerOne: Couple
+  coupleForPartnerTwoId: Int
   coupleForPartnerTwo: Couple
   comments: [Comment]
   createdAt: String!

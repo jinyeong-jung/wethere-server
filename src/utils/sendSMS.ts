@@ -13,3 +13,7 @@ export const sendSMS = (body: string, to: string) => {
 export const sendVerificationSMS = (key: string, to: string) => {
   sendSMS(`We There 인증번호 ${key}를 입력하세요.`, to);
 };
+
+export const sendCoupleVerificationSMS = (key: string, to: string) => {
+  sendSMS(`We There 커플 인증번호 ${key}를 입력하세요.`, to);
+};

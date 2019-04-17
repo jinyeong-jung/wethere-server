@@ -16,13 +16,19 @@ class Couple extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: "boolean" })
+  @Column({ type: "boolean", default: false })
   verified: boolean;
+
+  @Column({ nullable: true })
+  partnerOneId: number;
 
   @OneToMany(type => User, user => user.coupleForPartnerOne)
   partnerOne: User;
 
-  @OneToMany(type => User, user => user.coupleForPartnerTwo)
+  @Column({ nullable: true })
+  partnerTwoId: number;
+
+  @OneToMany(type => User, user => user.coupleForPartnerTwo, { nullable: true })
   partnerTwo: User;
 
   @Column({ type: "text", nullable: true })

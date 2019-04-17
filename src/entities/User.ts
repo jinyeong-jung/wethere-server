@@ -88,8 +88,14 @@ class User extends BaseEntity {
   @OneToMany(type => Feed, feed => feed.user)
   feeds: Feed[];
 
+  @Column({ nullable: true })
+  coupleForPartnerOneId: number;
+
   @ManyToOne(type => Couple, couple => couple.partnerOne)
   coupleForPartnerOne: Couple;
+
+  @Column({ nullable: true })
+  coupleForPartnerTwoId: number;
 
   @ManyToOne(type => Couple, couple => couple.partnerTwo)
   coupleForPartnerTwo: Couple;
