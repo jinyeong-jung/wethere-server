@@ -92,6 +92,17 @@ type EditPlaceResponse {
   error: String
 }
 
+type GetPlacesResponse {
+  ok: Boolean!
+  error: String
+  places: [Place]
+}
+
+type Query {
+  GetPlaces: GetPlacesResponse!
+  GetMyProfile: GetMyProfileResponse!
+}
+
 type Place {
   id: Int!
   couple: Couple!
@@ -114,10 +125,6 @@ type GetMyProfileResponse {
   ok: Boolean!
   error: String
   user: User
-}
-
-type Query {
-  GetMyProfile: GetMyProfileResponse!
 }
 
 type GoogleLoginResponse {
