@@ -29,6 +29,7 @@ type Mutation {
   CompleteCoupleVerification(phoneNumber: String!, key: String!): CompleteCoupleVerificationResponse!
   RequestCoupleVerification(partnerPhoneNumber: String!): RequestCoupleVerificationResponse!
   AddPlace(name: String!, lat: Float!, lng: Float!, address: String!, isVisited: Boolean!): AddPlaceResponse!
+  EditPlace(placeId: Int!, name: String, isVisited: Boolean): EditPlaceResponse!
   FacebookLogin(facebookId: String!, name: String!): FacebookLoginResponse!
   GoogleLogin(googleId: String!, name: String!, imageUrl: String): GoogleLoginResponse!
   KakaoLogin(kakaoId: String!, nickname: String!, thumbnail: String): KakaoLoginResponse!
@@ -76,6 +77,11 @@ type Feed {
 }
 
 type AddPlaceResponse {
+  ok: Boolean!
+  error: String
+}
+
+type EditPlaceResponse {
   ok: Boolean!
   error: String
 }
