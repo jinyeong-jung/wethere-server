@@ -66,6 +66,7 @@ type Mutation {
   NaverLogin(naverId: String!, nickname: String!, imageUrl: String): NaverLoginResponse!
   SignUpEnd(phoneNumber: String!, key: String!): SignUpEndResponse!
   SignUpStart(username: String!, password: String!, phoneNumber: String!): SignUpStartResponse!
+  UpdateMyProfile(password: String, nickname: String, gender: genderOptions, birth: String, status: statusOptions, profilePhoto: String): UpdateMyProfileResponse!
 }
 
 type GetMyProfileResponse {
@@ -134,6 +135,26 @@ type SignUpEndResponse {
 type SignUpStartResponse {
   ok: Boolean!
   error: String
+}
+
+type UpdateMyProfileResponse {
+  ok: Boolean!
+  error: String
+}
+
+enum genderOptions {
+  MALE
+  FEMALE
+}
+
+enum statusOptions {
+  HAPPY
+  DEPRESSED
+  MAD
+  ENERGIZED
+  UNCERTAIN
+  PEACEFUL
+  CONFUSED
 }
 
 type Verification {

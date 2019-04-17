@@ -1,0 +1,29 @@
+type UpdateMyProfileResponse {
+  ok: Boolean!
+  error: String
+}
+
+enum genderOptions {
+  MALE
+  FEMALE
+}
+
+enum statusOptions {
+  HAPPY
+  DEPRESSED
+  MAD
+  ENERGIZED
+  UNCERTAIN
+  PEACEFUL
+  CONFUSED
+}
+
+type Mutation {
+  UpdateMyProfile(
+    nickname: String
+    gender: genderOptions
+    birth: String
+    status: statusOptions
+    profilePhoto: String
+  ): UpdateMyProfileResponse!
+}

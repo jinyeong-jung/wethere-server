@@ -26,10 +26,10 @@ Server for the chat service for couples named "We There" made with GraphQL, Type
 ### Private Resolvers:
 
 - [x] Get My Profile
-- [ ] Update My Profile
+- [x] Update My Profile
 - [ ] Request Couple Verification
 - [ ] Complete Couple Verification
-- [ ] Report Loacation
+- [ ] Report Movement
 - [ ] Subscribe to Partner Location
 - [ ] Add Feed
 - [ ] Delete Feed
