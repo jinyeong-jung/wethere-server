@@ -16,9 +16,7 @@ type User {
   lastLat: Float
   lastLng: Float
   feeds: [Feed]
-  coupleForPartnerOneId: Int
   coupleForPartnerOne: Couple
-  coupleForPartnerTwoId: Int
   coupleForPartnerTwo: Couple
   comments: [Comment]
   createdAt: String!

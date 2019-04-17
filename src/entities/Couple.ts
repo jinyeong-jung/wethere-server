@@ -5,11 +5,13 @@ import {
   Column,
   CreateDateColumn,
   OneToMany,
-  OneToOne
+  OneToOne,
+  JoinColumn
 } from "typeorm";
 import User from "./User";
 import Chat from "./Chat";
 import Place from "./Place";
+import CoupleVerification from "./CoupleVerification";
 
 @Entity()
 class Couple extends BaseEntity {
@@ -19,16 +21,12 @@ class Couple extends BaseEntity {
   @Column({ type: "boolean", default: false })
   verified: boolean;
 
-  @Column({ nullable: true })
-  partnerOneId: number;
-
-  @OneToMany(type => User, user => user.coupleForPartnerOne)
+  @JoinColumn()
+  @OneToOne(type => User, user => user.coupleForPartnerOne)
   partnerOne: User;
 
-  @Column({ nullable: true })
-  partnerTwoId: number;
-
-  @OneToMany(type => User, user => user.coupleForPartnerTwo, { nullable: true })
+  @JoinColumn()
+  @OneToOne(type => User, user => user.coupleForPartnerTwo, { nullable: true })
   partnerTwo: User;
 
   @Column({ type: "text", nullable: true })
@@ -39,6 +37,13 @@ class Couple extends BaseEntity {
 
   @OneToMany(type => Place, place => place.couple)
   places: Place[];
+
+  @JoinColumn()
+  @OneToOne(
+    type => CoupleVerification,
+    coupleVerification => coupleVerification.couple
+  )
+  coupleVerification: CoupleVerification;
 
   @CreateDateColumn()
   createdAt: string;

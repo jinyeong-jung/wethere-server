@@ -3,5 +3,6 @@ type CoupleVerification {
   payload: String!
   key: String!
   verified: Boolean!
+  couple: Couple!
   createdAt: String!
 }

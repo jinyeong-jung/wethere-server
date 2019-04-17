@@ -27,7 +27,7 @@ Server for the chat service for couples named "We There" made with GraphQL, Type
 
 - [x] Get My Profile
 - [x] Update My Profile
-- [ ] Request Couple Verification
+- [x] Request Couple Verification
 - [ ] Complete Couple Verification
 - [ ] Add Feed
 - [ ] Delete Feed

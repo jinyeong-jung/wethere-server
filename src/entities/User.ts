@@ -8,7 +8,7 @@ import {
   BeforeInsert,
   BeforeUpdate,
   OneToMany,
-  ManyToOne
+  OneToOne
 } from "typeorm";
 import { genderType } from "../types/types";
 import Feed from "./Feed";
@@ -88,16 +88,10 @@ class User extends BaseEntity {
   @OneToMany(type => Feed, feed => feed.user)
   feeds: Feed[];
 
-  @Column({ nullable: true })
-  coupleForPartnerOneId: number;
-
-  @ManyToOne(type => Couple, couple => couple.partnerOne)
+  @OneToOne(type => Couple, couple => couple.partnerOne)
   coupleForPartnerOne: Couple;
 
-  @Column({ nullable: true })
-  coupleForPartnerTwoId: number;
-
-  @ManyToOne(type => Couple, couple => couple.partnerTwo)
+  @OneToOne(type => Couple, couple => couple.partnerTwo)
   coupleForPartnerTwo: Couple;
 
   @OneToMany(type => Comment, comment => comment.user)

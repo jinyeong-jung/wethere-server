@@ -4,8 +4,10 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
-  BeforeInsert
+  BeforeInsert,
+  OneToOne
 } from "typeorm";
+import Couple from "./Couple";
 
 @Entity()
 class CoupleVerification extends BaseEntity {
@@ -20,6 +22,9 @@ class CoupleVerification extends BaseEntity {
 
   @Column({ type: "boolean", default: false })
   verified: boolean;
+
+  @OneToOne(type => Couple, couple => couple.coupleVerification)
+  couple: Couple;
 
   @CreateDateColumn()
   createdAt: string;

@@ -22,11 +22,11 @@ const resolvers: Resolvers = {
         try {
           // #1. check if the user already has a verified couple
           const existingCoupleOne = await Couple.findOne({
-            id: user.coupleForPartnerOneId,
+            partnerOne: user,
             verified: true
           });
           const existingCoupleTwo = await Couple.findOne({
-            id: user.coupleForPartnerTwoId,
+            partnerTwo: user,
             verified: true
           });
           if (existingCoupleOne || existingCoupleTwo) {
@@ -52,11 +52,17 @@ const resolvers: Resolvers = {
 
             // #4. create a new couple
             const newCouple = await Couple.create({
-              partnerOneId: user.id,
-              partnerOne: user
+              partnerOne: user,
+              coupleVerification: newCoupleVerification
             }).save();
-            user.coupleForPartnerOneId = newCouple.id;
+
+            // Saving user data
+            user.coupleForPartnerOne = newCouple;
             await user.save();
+
+            // Saving couple verification data
+            newCoupleVerification.couple = newCouple;
+            await newCoupleVerification.save();
 
             // #5. send message w/ verification code to partner phone number
             await sendCoupleVerificationSMS(
