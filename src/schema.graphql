@@ -155,6 +155,7 @@ type User {
   id: Int!
   username: String
   password: String
+  loginProvider: String!
   phoneNumber: String
   verifiedPhoneNumber: Boolean!
   facebookId: String

@@ -39,6 +39,7 @@ const resolvers: Resolvers = {
         const user = await User.findOne({ phoneNumber });
         if (user) {
           user.verifiedPhoneNumber = true;
+          user.loginProvider = "LOCAL";
           await user.save();
         } else {
           return {

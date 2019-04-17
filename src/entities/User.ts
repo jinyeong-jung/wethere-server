@@ -10,7 +10,7 @@ import {
   OneToMany,
   OneToOne
 } from "typeorm";
-import { genderType } from "../types/types";
+import { genderType, loginProvider } from "../types/types";
 import Feed from "./Feed";
 import Couple from "./Couple";
 import Comment from "./Comment";
@@ -27,6 +27,13 @@ class User extends BaseEntity {
 
   @Column({ type: "text", nullable: true })
   password: string;
+
+  @Column({
+    type: "text",
+    enum: ["LOCAL", "FACEBOOK", "GOOGLE", "KAKAO", "NAVER"],
+    default: "LOCAL"
+  })
+  loginProvider: loginProvider;
 
   @Column({ type: "text", nullable: true })
   phoneNumber: string;

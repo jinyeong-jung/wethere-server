@@ -8,3 +8,5 @@ export type userStatus =
   | "UNCERTAIN"
   | "PEACEFUL"
   | "CONFUSED";
+
+export type loginProvider = "LOCAL" | "FACEBOOK" | "GOOGLE" | "KAKAO" | "NAVER";

@@ -5,6 +5,7 @@ import {
 } from "../../../types/graph";
 import User from "../../../entities/User";
 import createJWT from "../../../utils/createJWT";
+import { loginProvider } from "../../../types/types";
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -38,7 +39,8 @@ const resolvers: Resolvers = {
         const user = await User.create({
           facebookId,
           nickname: name,
-          profilePhoto: `http://graph.facebook.com/${facebookId}/picture?type=square`
+          profilePhoto: `http://graph.facebook.com/${facebookId}/picture?type=square`,
+          loginProvider: "FACEBOOK"
         }).save();
         const token = createJWT(user.id);
         return {

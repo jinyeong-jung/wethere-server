@@ -37,7 +37,8 @@ const resolvers: Resolvers = {
       try {
         const user = await User.create({
           kakaoId,
-          nickname
+          nickname,
+          loginProvider: "KAKAO"
         });
         //   profile image t/f check
         if (thumbnail) {

@@ -2,6 +2,7 @@ import { Resolvers } from "src/types/resolvers";
 import { NaverLoginMutationArgs, NaverLoginResponse } from "src/types/graph";
 import User from "../../../entities/User";
 import createJWT from "../../../utils/createJWT";
+import { loginProvider } from "../../../types/types";
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -34,7 +35,8 @@ const resolvers: Resolvers = {
       try {
         const user = await User.create({
           naverId,
-          nickname
+          nickname,
+          loginProvider: "NAVER"
         });
         //   profile image t/f check
         if (imageUrl) {
