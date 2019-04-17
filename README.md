@@ -29,8 +29,6 @@ Server for the chat service for couples named "We There" made with GraphQL, Type
 - [x] Update My Profile
 - [ ] Request Couple Verification
 - [ ] Complete Couple Verification
-- [ ] Report Movement
-- [ ] Subscribe to Partner Location
 - [ ] Add Feed
 - [ ] Delete Feed
 - [ ] Get Feeds
@@ -41,7 +39,14 @@ Server for the chat service for couples named "We There" made with GraphQL, Type
 - [ ] Edit Place
 - [ ] Delete Place
 - [ ] Get Places
+- [ ] Toggle Visited Mode of Place
 - [ ] Create a Chat Room
 - [ ] Get Chat Room Messages
 - [ ] Send a Chat Message
 - [ ] Subscribe to Chat Room Messages
+
+---
+
+### Challenge:
+
+- [ ] Change Password

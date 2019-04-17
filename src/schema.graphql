@@ -20,13 +20,39 @@ type Comment {
   createdAt: String!
 }
 
+type RequestCoupleVerificationResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  RequestCoupleVerification(partnerPhoneNumber: String!): RequestCoupleVerificationResponse!
+  FacebookLogin(facebookId: String!, name: String!): FacebookLoginResponse!
+  GoogleLogin(googleId: String!, name: String!, imageUrl: String): GoogleLoginResponse!
+  KakaoLogin(kakaoId: String!, nickname: String!, thumbnail: String): KakaoLoginResponse!
+  Login(username: String!, password: String!): LoginResponse!
+  NaverLogin(naverId: String!, nickname: String!, imageUrl: String): NaverLoginResponse!
+  SignUpEnd(phoneNumber: String!, key: String!): SignUpEndResponse!
+  SignUpStart(username: String!, password: String!, phoneNumber: String!): SignUpStartResponse!
+  UpdateMyProfile(nickname: String, gender: genderOptions, birth: String, status: statusOptions, profilePhoto: String, phoneNumber: String): UpdateMyProfileResponse!
+}
+
 type Couple {
   id: Int!
+  verified: Boolean!
   partnerOne: User!
   partnerTwo: User!
   firstDate: String
   chat: Chat
   places: [Place]
+  createdAt: String!
+}
+
+type CoupleVerification {
+  id: Int!
+  payload: String!
+  key: String!
+  verified: Boolean!
   createdAt: String!
 }
 
@@ -47,7 +73,7 @@ type Place {
   lat: Float!
   lng: Float!
   address: String!
-  isFav: Boolean!
+  isVisited: Boolean!
   feeds: [Feed]
   createdAt: String!
 }
@@ -56,17 +82,6 @@ type FacebookLoginResponse {
   ok: Boolean!
   error: String
   token: String
-}
-
-type Mutation {
-  FacebookLogin(facebookId: String!, name: String!): FacebookLoginResponse!
-  GoogleLogin(googleId: String!, name: String!, imageUrl: String): GoogleLoginResponse!
-  KakaoLogin(kakaoId: String!, nickname: String!, thumbnail: String): KakaoLoginResponse!
-  Login(username: String!, password: String!): LoginResponse!
-  NaverLogin(naverId: String!, nickname: String!, imageUrl: String): NaverLoginResponse!
-  SignUpEnd(phoneNumber: String!, key: String!): SignUpEndResponse!
-  SignUpStart(username: String!, password: String!, phoneNumber: String!): SignUpStartResponse!
-  UpdateMyProfile(password: String, nickname: String, gender: genderOptions, birth: String, status: statusOptions, profilePhoto: String): UpdateMyProfileResponse!
 }
 
 type GetMyProfileResponse {

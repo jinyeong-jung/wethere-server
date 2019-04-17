@@ -1,0 +1,10 @@
+type RequestCoupleVerificationResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  RequestCoupleVerification(
+    partnerPhoneNumber: String!
+  ): RequestCoupleVerificationResponse!
+}

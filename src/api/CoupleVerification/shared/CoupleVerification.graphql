@@ -1,0 +1,7 @@
+type CoupleVerification {
+  id: Int!
+  payload: String!
+  key: String!
+  verified: Boolean!
+  createdAt: String!
+}

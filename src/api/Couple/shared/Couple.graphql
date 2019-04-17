@@ -1,5 +1,6 @@
 type Couple {
   id: Int!
+  verified: Boolean!
   partnerOne: User!
   partnerTwo: User!
   firstDate: String

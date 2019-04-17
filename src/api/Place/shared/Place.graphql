@@ -5,7 +5,7 @@ type Place {
   lat: Float!
   lng: Float!
   address: String!
-  isFav: Boolean!
+  isVisited: Boolean!
   feeds: [Feed]
   createdAt: String!
 }

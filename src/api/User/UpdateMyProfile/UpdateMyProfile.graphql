@@ -25,5 +25,6 @@ type Mutation {
     birth: String
     status: statusOptions
     profilePhoto: String
+    phoneNumber: String
   ): UpdateMyProfileResponse!
 }

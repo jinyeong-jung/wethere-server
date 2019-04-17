@@ -16,6 +16,9 @@ class Couple extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ type: "boolean" })
+  verified: boolean;
+
   @OneToMany(type => User, user => user.coupleForPartnerOne)
   partnerOne: User;
 

@@ -31,7 +31,7 @@ class Place extends BaseEntity {
   address: string;
 
   @Column({ type: "boolean", default: false })
-  isFav: boolean;
+  isVisited: boolean;
 
   @OneToMany(type => Feed, feed => feed.place)
   feeds: Feed[];
