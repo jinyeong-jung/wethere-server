@@ -29,17 +29,17 @@ Server for the chat service for couples named "We There" made with GraphQL, Type
 - [x] Update My Profile
 - [x] Request Couple Verification
 - [x] Complete Couple Verification
+- [x] Add Place
+- [ ] Edit Place
+- [ ] Delete Place
+- [ ] Get Places
+- [ ] Toggle Visited Mode of Place
 - [ ] Add Feed
 - [ ] Delete Feed
 - [ ] Get Feeds
 - [ ] Add Comment
 - [ ] Delete Comment
 - [ ] Get Comments
-- [ ] Add Place
-- [ ] Edit Place
-- [ ] Delete Place
-- [ ] Get Places
-- [ ] Toggle Visited Mode of Place
 - [ ] Create a Chat Room
 - [ ] Get Chat Room Messages
 - [ ] Send a Chat Message

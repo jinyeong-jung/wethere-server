@@ -28,6 +28,7 @@ type CompleteCoupleVerificationResponse {
 type Mutation {
   CompleteCoupleVerification(phoneNumber: String!, key: String!): CompleteCoupleVerificationResponse!
   RequestCoupleVerification(partnerPhoneNumber: String!): RequestCoupleVerificationResponse!
+  AddPlace(name: String!, lat: Float!, lng: Float!, address: String!, isVisited: Boolean!): AddPlaceResponse!
   FacebookLogin(facebookId: String!, name: String!): FacebookLoginResponse!
   GoogleLogin(googleId: String!, name: String!, imageUrl: String): GoogleLoginResponse!
   KakaoLogin(kakaoId: String!, nickname: String!, thumbnail: String): KakaoLoginResponse!
@@ -72,6 +73,11 @@ type Feed {
   comments: [Comment]
   place: Place
   createdAt: String!
+}
+
+type AddPlaceResponse {
+  ok: Boolean!
+  error: String
 }
 
 type Place {
