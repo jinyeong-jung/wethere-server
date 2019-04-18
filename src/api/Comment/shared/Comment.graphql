@@ -1,5 +1,6 @@
 type Comment {
   id: Int!
+  feedId: Int
   feed: Feed!
   text: String!
   user: User!

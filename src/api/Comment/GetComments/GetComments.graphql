@@ -1,0 +1,9 @@
+type GetCommentsResponse {
+  ok: Boolean!
+  error: String
+  comments: [Comment]
+}
+
+type Query {
+  GetComments(feedId: Int!): GetCommentsResponse!
+}

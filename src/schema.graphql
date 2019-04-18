@@ -42,8 +42,22 @@ type DeleteCommentResponse {
   error: String
 }
 
+type GetCommentsResponse {
+  ok: Boolean!
+  error: String
+  comments: [Comment]
+}
+
+type Query {
+  GetComments(feedId: Int!): GetCommentsResponse!
+  GetFeeds(placeId: Int!): GetFeedsResponse!
+  GetPlaces: GetPlacesResponse!
+  GetMyProfile: GetMyProfileResponse!
+}
+
 type Comment {
   id: Int!
+  feedId: Int
   feed: Feed!
   text: String!
   user: User!
@@ -96,12 +110,6 @@ type GetFeedsResponse {
   ok: Boolean!
   error: String
   feeds: [Feed]
-}
-
-type Query {
-  GetFeeds(placeId: Int!): GetFeedsResponse!
-  GetPlaces: GetPlacesResponse!
-  GetMyProfile: GetMyProfileResponse!
 }
 
 type Feed {

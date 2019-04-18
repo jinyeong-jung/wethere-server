@@ -14,6 +14,9 @@ class Comment extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ type: "integer" })
+  feedId: number;
+
   @ManyToOne(type => Feed, feed => feed.comments)
   feed: Feed;
 
