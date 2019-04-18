@@ -80,14 +80,28 @@ type DeleteFeedResponse {
   error: String
 }
 
+type GetFeedsResponse {
+  ok: Boolean!
+  error: String
+  feeds: [Feed]
+}
+
+type Query {
+  GetFeeds(placeId: Int!): GetFeedsResponse!
+  GetPlaces: GetPlacesResponse!
+  GetMyProfile: GetMyProfileResponse!
+}
+
 type Feed {
   id: Int!
   couple: Couple!
+  userId: Int!
   user: User!
   text: String!
   feedPicture: String
   comments: [Comment]
-  place: Place
+  placeId: Int
+  place: Place!
   createdAt: String!
 }
 
@@ -110,11 +124,6 @@ type GetPlacesResponse {
   ok: Boolean!
   error: String
   places: [Place]
-}
-
-type Query {
-  GetPlaces: GetPlacesResponse!
-  GetMyProfile: GetMyProfileResponse!
 }
 
 type Place {

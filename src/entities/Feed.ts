@@ -20,6 +20,9 @@ class Feed extends BaseEntity {
   @ManyToOne(type => Couple, couple => couple.feeds)
   couple: Couple;
 
+  @Column({ type: "integer" })
+  userId: number;
+
   @ManyToOne(type => User, user => user.feeds)
   user: User;
 
@@ -31,6 +34,9 @@ class Feed extends BaseEntity {
 
   @OneToMany(type => Comment, comment => comment.feed)
   comments: Comment[];
+
+  @Column({ type: "integer" })
+  placeId: number;
 
   @ManyToOne(type => Place, place => place.feeds)
   place: Place;

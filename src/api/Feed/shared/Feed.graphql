@@ -1,10 +1,12 @@
 type Feed {
   id: Int!
   couple: Couple!
+  userId: Int!
   user: User!
   text: String!
   feedPicture: String
   comments: [Comment]
-  place: Place
+  placeId: Int
+  place: Place!
   createdAt: String!
 }

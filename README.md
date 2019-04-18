@@ -35,7 +35,7 @@ Server for the chat service for couples named "We There" made with GraphQL, Type
 - [x] Get Places
 - [x] Add Feed
 - [x] Delete Feed
-- [ ] Get Feeds
+- [x] Get Feeds
 - [ ] Add Comment
 - [ ] Delete Comment
 - [ ] Get Comments

@@ -1,0 +1,9 @@
+type GetFeedsResponse {
+  ok: Boolean!
+  error: String
+  feeds: [Feed]
+}
+
+type Query {
+  GetFeeds(placeId: Int!): GetFeedsResponse!
+}
