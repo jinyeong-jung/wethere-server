@@ -12,20 +12,13 @@ type Message {
   createdAt: String!
 }
 
-type Comment {
-  id: Int!
-  feed: Feed!
-  text: String!
-  user: User!
-  createdAt: String!
-}
-
-type CompleteCoupleVerificationResponse {
+type AddCommentResponse {
   ok: Boolean!
   error: String
 }
 
 type Mutation {
+  AddComment(feedId: Int!, text: String!): AddCommentResponse!
   CompleteCoupleVerification(phoneNumber: String!, key: String!): CompleteCoupleVerificationResponse!
   RequestCoupleVerification(partnerPhoneNumber: String!): RequestCoupleVerificationResponse!
   AddFeed(placeId: Int!, text: String!, feedPicture: String): AddFeedResponse!
@@ -41,6 +34,19 @@ type Mutation {
   SignUpEnd(phoneNumber: String!, key: String!): SignUpEndResponse!
   SignUpStart(username: String!, password: String!, phoneNumber: String!): SignUpStartResponse!
   UpdateMyProfile(nickname: String, gender: genderOptions, birth: String, status: statusOptions, profilePhoto: String, phoneNumber: String): UpdateMyProfileResponse!
+}
+
+type Comment {
+  id: Int!
+  feed: Feed!
+  text: String!
+  user: User!
+  createdAt: String!
+}
+
+type CompleteCoupleVerificationResponse {
+  ok: Boolean!
+  error: String
 }
 
 type RequestCoupleVerificationResponse {

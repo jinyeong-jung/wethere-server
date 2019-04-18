@@ -19,7 +19,6 @@ const resolvers: Resolvers = {
             placeId: args.placeId
           });
           if (feeds) {
-            console.log(feeds.forEach(feed => feed.user));
             return {
               ok: true,
               error: null,
