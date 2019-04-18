@@ -19,6 +19,7 @@ type AddCommentResponse {
 
 type Mutation {
   AddComment(feedId: Int!, text: String!): AddCommentResponse!
+  DeleteComment(commentId: Int!): DeleteCommentResponse!
   CompleteCoupleVerification(phoneNumber: String!, key: String!): CompleteCoupleVerificationResponse!
   RequestCoupleVerification(partnerPhoneNumber: String!): RequestCoupleVerificationResponse!
   AddFeed(placeId: Int!, text: String!, feedPicture: String): AddFeedResponse!
@@ -34,6 +35,11 @@ type Mutation {
   SignUpEnd(phoneNumber: String!, key: String!): SignUpEndResponse!
   SignUpStart(username: String!, password: String!, phoneNumber: String!): SignUpStartResponse!
   UpdateMyProfile(nickname: String, gender: genderOptions, birth: String, status: statusOptions, profilePhoto: String, phoneNumber: String): UpdateMyProfileResponse!
+}
+
+type DeleteCommentResponse {
+  ok: Boolean!
+  error: String
 }
 
 type Comment {
