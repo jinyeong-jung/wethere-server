@@ -1,5 +1,6 @@
 type Feed {
   id: Int!
+  couple: Couple!
   user: User!
   text: String!
   feedPicture: String

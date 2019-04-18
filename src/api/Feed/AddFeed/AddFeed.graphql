@@ -1,0 +1,8 @@
+type AddFeedResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  AddFeed(placeId: Int!, text: String!, feedPicture: String): AddFeedResponse!
+}

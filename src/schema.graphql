@@ -28,6 +28,7 @@ type CompleteCoupleVerificationResponse {
 type Mutation {
   CompleteCoupleVerification(phoneNumber: String!, key: String!): CompleteCoupleVerificationResponse!
   RequestCoupleVerification(partnerPhoneNumber: String!): RequestCoupleVerificationResponse!
+  AddFeed(placeId: Int!, text: String!, feedPicture: String): AddFeedResponse!
   AddPlace(name: String!, lat: Float!, lng: Float!, address: String!, isVisited: Boolean!): AddPlaceResponse!
   DeletePlace(placeId: Int!): DeletePlaceResponse!
   EditPlace(placeId: Int!, name: String, isVisited: Boolean): EditPlaceResponse!
@@ -54,6 +55,7 @@ type Couple {
   firstDate: String
   chat: Chat
   places: [Place]
+  feeds: [Feed]
   coupleVerification: CoupleVerification
   createdAt: String!
 }
@@ -67,8 +69,14 @@ type CoupleVerification {
   createdAt: String!
 }
 
+type AddFeedResponse {
+  ok: Boolean!
+  error: String
+}
+
 type Feed {
   id: Int!
+  couple: Couple!
   user: User!
   text: String!
   feedPicture: String

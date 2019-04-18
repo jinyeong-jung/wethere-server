@@ -6,6 +6,7 @@ type Couple {
   firstDate: String
   chat: Chat
   places: [Place]
+  feeds: [Feed]
   coupleVerification: CoupleVerification
   createdAt: String!
 }

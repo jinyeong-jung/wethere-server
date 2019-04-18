@@ -10,11 +10,15 @@ import {
 import User from "./User";
 import Comment from "./Comment";
 import Place from "./Place";
+import Couple from "./Couple";
 
 @Entity()
 class Feed extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @ManyToOne(type => Couple, couple => couple.feeds)
+  couple: Couple;
 
   @ManyToOne(type => User, user => user.feeds)
   user: User;

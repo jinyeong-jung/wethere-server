@@ -2,7 +2,6 @@ import { Resolvers } from "src/types/resolvers";
 import { NaverLoginMutationArgs, NaverLoginResponse } from "src/types/graph";
 import User from "../../../entities/User";
 import createJWT from "../../../utils/createJWT";
-import { loginProvider } from "../../../types/types";
 
 const resolvers: Resolvers = {
   Mutation: {
