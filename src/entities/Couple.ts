@@ -22,9 +22,15 @@ class Couple extends BaseEntity {
   @Column({ type: "boolean", default: false })
   verified: boolean;
 
+  @Column({ type: "integer" })
+  partnerOneId: number;
+
   @JoinColumn()
   @OneToOne(type => User, user => user.coupleForPartnerOne)
   partnerOne: User;
+
+  @Column({ type: "integer", nullable: true })
+  partnerTwoId: number;
 
   @JoinColumn()
   @OneToOne(type => User, user => user.coupleForPartnerTwo, { nullable: true })

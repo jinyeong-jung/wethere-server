@@ -1,0 +1,8 @@
+type CreateChatResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  CreateChat(coupleId: Int!): CreateChatResponse!
+}

@@ -1,6 +1,7 @@
 type Chat {
   id: Int!
   messages: [Message]
+  coupleId: Int!
   couple: Couple!
   createdAt: String!
 }

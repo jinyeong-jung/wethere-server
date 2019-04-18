@@ -4,7 +4,8 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   OneToMany,
-  OneToOne
+  OneToOne,
+  Column
 } from "typeorm";
 import Message from "./Message";
 import Couple from "./Couple";
@@ -16,6 +17,9 @@ class Chat extends BaseEntity {
 
   @OneToMany(type => Message, message => message.chat)
   messages: Message[];
+
+  @Column({ type: "integer" })
+  coupleId: number;
 
   @OneToOne(type => Couple, couple => couple.chat)
   couple: Couple;

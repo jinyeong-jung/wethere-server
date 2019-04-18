@@ -1,7 +1,9 @@
 type Couple {
   id: Int!
   verified: Boolean!
+  partnerOneId: Int!
   partnerOne: User!
+  partnerTwoId: Int
   partnerTwo: User
   firstDate: String
   chat: Chat

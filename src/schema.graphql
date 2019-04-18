@@ -1,23 +1,10 @@
-type Chat {
-  id: Int!
-  messages: [Message]
-  couple: Couple!
-  createdAt: String!
-}
-
-type Message {
-  id: Int!
-  text: String!
-  chat: Chat!
-  createdAt: String!
-}
-
-type AddCommentResponse {
+type CreateChatResponse {
   ok: Boolean!
   error: String
 }
 
 type Mutation {
+  CreateChat(coupleId: Int!): CreateChatResponse!
   AddComment(feedId: Int!, text: String!): AddCommentResponse!
   DeleteComment(commentId: Int!): DeleteCommentResponse!
   CompleteCoupleVerification(phoneNumber: String!, key: String!): CompleteCoupleVerificationResponse!
@@ -35,6 +22,26 @@ type Mutation {
   SignUpEnd(phoneNumber: String!, key: String!): SignUpEndResponse!
   SignUpStart(username: String!, password: String!, phoneNumber: String!): SignUpStartResponse!
   UpdateMyProfile(nickname: String, gender: genderOptions, birth: String, status: statusOptions, profilePhoto: String, phoneNumber: String): UpdateMyProfileResponse!
+}
+
+type Chat {
+  id: Int!
+  messages: [Message]
+  coupleId: Int!
+  couple: Couple!
+  createdAt: String!
+}
+
+type Message {
+  id: Int!
+  text: String!
+  chat: Chat!
+  createdAt: String!
+}
+
+type AddCommentResponse {
+  ok: Boolean!
+  error: String
 }
 
 type DeleteCommentResponse {
@@ -77,7 +84,9 @@ type RequestCoupleVerificationResponse {
 type Couple {
   id: Int!
   verified: Boolean!
+  partnerOneId: Int!
   partnerOne: User!
+  partnerTwoId: Int
   partnerTwo: User
   firstDate: String
   chat: Chat
