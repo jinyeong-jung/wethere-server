@@ -29,6 +29,7 @@ type Mutation {
   CompleteCoupleVerification(phoneNumber: String!, key: String!): CompleteCoupleVerificationResponse!
   RequestCoupleVerification(partnerPhoneNumber: String!): RequestCoupleVerificationResponse!
   AddFeed(placeId: Int!, text: String!, feedPicture: String): AddFeedResponse!
+  DeleteFeed(feedId: Int!): DeleteFeedResponse!
   AddPlace(name: String!, lat: Float!, lng: Float!, address: String!, isVisited: Boolean!): AddPlaceResponse!
   DeletePlace(placeId: Int!): DeletePlaceResponse!
   EditPlace(placeId: Int!, name: String, isVisited: Boolean): EditPlaceResponse!
@@ -70,6 +71,11 @@ type CoupleVerification {
 }
 
 type AddFeedResponse {
+  ok: Boolean!
+  error: String
+}
+
+type DeleteFeedResponse {
   ok: Boolean!
   error: String
 }
