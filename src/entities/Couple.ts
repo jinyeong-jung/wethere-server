@@ -13,6 +13,7 @@ import Chat from "./Chat";
 import Place from "./Place";
 import CoupleVerification from "./CoupleVerification";
 import Feed from "./Feed";
+import Message from "./Message";
 
 @Entity()
 class Couple extends BaseEntity {
@@ -42,6 +43,9 @@ class Couple extends BaseEntity {
   @JoinColumn()
   @OneToOne(type => Chat, chat => chat.couple)
   chat: Chat;
+
+  @OneToMany(type => Message, message => message.couple)
+  messages: Message[];
 
   @OneToMany(type => Place, place => place.couple)
   places: Place[];

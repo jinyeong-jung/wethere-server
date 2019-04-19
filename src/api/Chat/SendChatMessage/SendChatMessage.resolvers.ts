@@ -7,6 +7,7 @@ import {
 import User from "../../../entities/User";
 import Chat from "../../../entities/Chat";
 import Message from "../../../entities/Message";
+import Couple from "../../../entities/Couple";
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -23,6 +24,9 @@ const resolvers: Resolvers = {
             { id: chatId },
             { relations: ["messages"] }
           );
+          const coupleOne = await Couple.findOne({ partnerOne: user });
+          const coupleTwo = await Couple.findOne({ partnerTwo: user });
+          const couple = coupleOne || coupleTwo;
           if (chat) {
             if (
               chat.coupleId === user.coupleForPartnerOneId ||
@@ -32,7 +36,8 @@ const resolvers: Resolvers = {
               const message = await Message.create({
                 text,
                 chat,
-                user
+                user,
+                couple
               }).save();
               pubSub.publish("newChatMessage", {
                 MessageSubscription: message

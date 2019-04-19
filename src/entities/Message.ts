@@ -8,6 +8,7 @@ import {
 } from "typeorm";
 import Chat from "./Chat";
 import User from "./User";
+import Couple from "./Couple";
 
 @Entity()
 class Message extends BaseEntity {
@@ -22,6 +23,12 @@ class Message extends BaseEntity {
 
   @ManyToOne(type => User, user => user.messages)
   user: User;
+
+  @Column({ type: "integer" })
+  coupleId: number;
+
+  @ManyToOne(type => Couple, couple => couple.messages)
+  couple: Couple;
 
   @CreateDateColumn()
   createdAt: string;
