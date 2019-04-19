@@ -41,7 +41,7 @@ Server for the chat service for couples named "We There" made with GraphQL, Type
 - [x] Get Comments
 - [x] Create a Chat Room
 - [x] Get Chat
-- [ ] Send a Chat Message
+- [x] Send a Chat Message
 - [ ] Get Chat Room Messages
 - [ ] Subscribe to Chat Room Messages
 

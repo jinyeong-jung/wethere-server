@@ -1,51 +1,60 @@
 import { Resolvers } from "../../../types/resolvers";
 import privateResolver from "../../../utils/privateResolver";
-import { GetChatQueryArgs, GetChatResponse } from "../../../types/graph";
+import {
+  SendChatMessageMutationArgs,
+  SendChatMessageResponse
+} from "../../../types/graph";
 import User from "../../../entities/User";
 import Chat from "../../../entities/Chat";
+import Message from "../../../entities/Message";
 
 const resolvers: Resolvers = {
-  Query: {
-    GetChat: privateResolver(
-      async (_, args: GetChatQueryArgs, { req }): Promise<GetChatResponse> => {
+  Mutation: {
+    SendChatMessage: privateResolver(
+      async (
+        _,
+        args: SendChatMessageMutationArgs,
+        { req }
+      ): Promise<SendChatMessageResponse> => {
         const user: User = req.user;
+        const { text, chatId } = args;
         try {
           const chat = await Chat.findOne(
-            {
-              id: args.chatId
-            },
+            { id: chatId },
             { relations: ["messages"] }
           );
-
           if (chat) {
             if (
               chat.coupleId === user.coupleForPartnerOneId ||
               chat.coupleId === user.coupleForPartnerTwoId
             ) {
+              // create new message
+              await Message.create({
+                text,
+                chat,
+                user
+              }).save();
+
               return {
                 ok: true,
-                error: null,
-                chat
+                error: null
               };
             } else {
               return {
                 ok: false,
-                error: "접근 권한이 없습니다",
-                chat: null
+                error: "메시지 전송 권한이 없습니다."
               };
             }
           } else {
             return {
               ok: false,
-              error: "채팅방이 존재하지 않습니다",
-              chat: null
+              error: "채팅방이 존재하지 않습니다."
             };
           }
         } catch (error) {
           return {
             ok: false,
-            error: error.message,
-            chat: null
+            error: error.message
           };
         }
       }

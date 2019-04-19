@@ -14,6 +14,7 @@ import { genderType, loginProvider } from "../types/types";
 import Feed from "./Feed";
 import Couple from "./Couple";
 import Comment from "./Comment";
+import Message from "./Message";
 
 const BCRYPT_ROUNDS = 10;
 
@@ -109,6 +110,9 @@ class User extends BaseEntity {
 
   @OneToMany(type => Comment, comment => comment.user)
   comments: Comment[];
+
+  @OneToMany(type => Message, message => message.user, { cascade: true })
+  messages: Message[];
 
   @CreateDateColumn()
   createdAt: string;

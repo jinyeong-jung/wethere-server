@@ -5,6 +5,7 @@ type CreateChatResponse {
 
 type Mutation {
   CreateChat(coupleId: Int!): CreateChatResponse!
+  SendChatMessage(chatId: Int!, text: String!): SendChatMessageResponse!
   AddComment(feedId: Int!, text: String!): AddCommentResponse!
   DeleteComment(commentId: Int!): DeleteCommentResponse!
   CompleteCoupleVerification(phoneNumber: String!, key: String!): CompleteCoupleVerificationResponse!
@@ -38,6 +39,11 @@ type Query {
   GetMyProfile: GetMyProfileResponse!
 }
 
+type SendChatMessageResponse {
+  ok: Boolean!
+  error: String
+}
+
 type Chat {
   id: Int!
   messages: [Message]
@@ -50,6 +56,7 @@ type Message {
   id: Int!
   text: String!
   chat: Chat!
+  user: User!
   createdAt: String!
 }
 
@@ -234,6 +241,7 @@ type User {
   coupleForPartnerTwoId: Int
   coupleForPartnerTwo: Couple
   comments: [Comment]
+  messages: [Message]
   createdAt: String!
 }
 

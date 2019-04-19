@@ -15,7 +15,7 @@ class Chat extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToMany(type => Message, message => message.chat)
+  @OneToMany(type => Message, message => message.chat, { cascade: true })
   messages: Message[];
 
   @Column({ type: "integer" })
