@@ -18,13 +18,18 @@ const resolvers: Resolvers = {
       ): Promise<CreateChatResponse> => {
         const user: User = req.user;
         try {
-          // "구문 오류, \"WHERE\" 부근"
-          const coupleOne = await Couple.findOne({
-            partnerOneId: user.id
-          });
-          const coupleTwo = await Couple.findOne({
-            partnerTwoId: user.id
-          });
+          const coupleOne = await Couple.findOne(
+            {
+              partnerOne: user
+            },
+            { relations: ["chat"] }
+          );
+          const coupleTwo = await Couple.findOne(
+            {
+              partnerTwo: user
+            },
+            { relations: ["chat"] }
+          );
           const couple = coupleOne || coupleTwo;
 
           if (couple && couple.id === args.coupleId) {

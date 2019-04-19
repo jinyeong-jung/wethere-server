@@ -39,6 +39,7 @@ class Couple extends BaseEntity {
   @Column({ type: "text", nullable: true })
   firstDate: string;
 
+  @JoinColumn()
   @OneToOne(type => Chat, chat => chat.couple)
   chat: Chat;
 
