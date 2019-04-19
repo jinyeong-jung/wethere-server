@@ -14,7 +14,7 @@ const resolvers: Resolvers = {
       async (
         _,
         args: SendChatMessageMutationArgs,
-        { req }
+        { req, pubSub }
       ): Promise<SendChatMessageResponse> => {
         const user: User = req.user;
         const { text, chatId } = args;
@@ -29,11 +29,14 @@ const resolvers: Resolvers = {
               chat.coupleId === user.coupleForPartnerTwoId
             ) {
               // create new message
-              await Message.create({
+              const message = await Message.create({
                 text,
                 chat,
                 user
               }).save();
+              pubSub.publish("newChatMessage", {
+                MessageSubscription: message
+              });
 
               return {
                 ok: true,

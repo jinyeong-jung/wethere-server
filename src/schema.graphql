@@ -39,6 +39,10 @@ type Query {
   GetMyProfile: GetMyProfileResponse!
 }
 
+type Subscription {
+  MessageSubscription: Message
+}
+
 type SendChatMessageResponse {
   ok: Boolean!
   error: String
