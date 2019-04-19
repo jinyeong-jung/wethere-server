@@ -1,11 +1,16 @@
-export const typeDefs = ["type CreateChatResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype Mutation {\n  CreateChat(coupleId: Int!): CreateChatResponse!\n  AddComment(feedId: Int!, text: String!): AddCommentResponse!\n  DeleteComment(commentId: Int!): DeleteCommentResponse!\n  CompleteCoupleVerification(phoneNumber: String!, key: String!): CompleteCoupleVerificationResponse!\n  RequestCoupleVerification(partnerPhoneNumber: String!): RequestCoupleVerificationResponse!\n  AddFeed(placeId: Int!, text: String!, feedPicture: String): AddFeedResponse!\n  DeleteFeed(feedId: Int!): DeleteFeedResponse!\n  AddPlace(name: String!, lat: Float!, lng: Float!, address: String!, isVisited: Boolean!): AddPlaceResponse!\n  DeletePlace(placeId: Int!): DeletePlaceResponse!\n  EditPlace(placeId: Int!, name: String, isVisited: Boolean): EditPlaceResponse!\n  FacebookLogin(facebookId: String!, name: String!): FacebookLoginResponse!\n  GoogleLogin(googleId: String!, name: String!, imageUrl: String): GoogleLoginResponse!\n  KakaoLogin(kakaoId: String!, nickname: String!, thumbnail: String): KakaoLoginResponse!\n  Login(username: String!, password: String!): LoginResponse!\n  NaverLogin(naverId: String!, nickname: String!, imageUrl: String): NaverLoginResponse!\n  SignUpEnd(phoneNumber: String!, key: String!): SignUpEndResponse!\n  SignUpStart(username: String!, password: String!, phoneNumber: String!): SignUpStartResponse!\n  UpdateMyProfile(nickname: String, gender: genderOptions, birth: String, status: statusOptions, profilePhoto: String, phoneNumber: String): UpdateMyProfileResponse!\n}\n\ntype Chat {\n  id: Int!\n  messages: [Message]\n  coupleId: Int!\n  couple: Couple!\n  createdAt: String!\n}\n\ntype Message {\n  id: Int!\n  text: String!\n  chat: Chat!\n  createdAt: String!\n}\n\ntype AddCommentResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype DeleteCommentResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype GetCommentsResponse {\n  ok: Boolean!\n  error: String\n  comments: [Comment]\n}\n\ntype Query {\n  GetComments(feedId: Int!): GetCommentsResponse!\n  GetFeeds(placeId: Int!): GetFeedsResponse!\n  GetPlaces: GetPlacesResponse!\n  GetMyProfile: GetMyProfileResponse!\n}\n\ntype Comment {\n  id: Int!\n  feedId: Int\n  feed: Feed!\n  text: String!\n  user: User!\n  createdAt: String!\n}\n\ntype CompleteCoupleVerificationResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype RequestCoupleVerificationResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype Couple {\n  id: Int!\n  verified: Boolean!\n  partnerOneId: Int!\n  partnerOne: User!\n  partnerTwoId: Int\n  partnerTwo: User\n  firstDate: String\n  chat: Chat\n  places: [Place]\n  feeds: [Feed]\n  coupleVerification: CoupleVerification\n  createdAt: String!\n}\n\ntype CoupleVerification {\n  id: Int!\n  payload: String!\n  key: String!\n  verified: Boolean!\n  couple: Couple!\n  createdAt: String!\n}\n\ntype AddFeedResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype DeleteFeedResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype GetFeedsResponse {\n  ok: Boolean!\n  error: String\n  feeds: [Feed]\n}\n\ntype Feed {\n  id: Int!\n  couple: Couple!\n  userId: Int!\n  user: User!\n  text: String!\n  feedPicture: String\n  comments: [Comment]\n  placeId: Int\n  place: Place!\n  createdAt: String!\n}\n\ntype AddPlaceResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype DeletePlaceResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype EditPlaceResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype GetPlacesResponse {\n  ok: Boolean!\n  error: String\n  places: [Place]\n}\n\ntype Place {\n  id: Int!\n  couple: Couple!\n  name: String!\n  lat: Float!\n  lng: Float!\n  address: String!\n  isVisited: Boolean!\n  feeds: [Feed]\n  createdAt: String!\n}\n\ntype FacebookLoginResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype GetMyProfileResponse {\n  ok: Boolean!\n  error: String\n  user: User\n}\n\ntype GoogleLoginResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype KakaoLoginResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype LoginResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype NaverLoginResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype User {\n  id: Int!\n  username: String\n  password: String\n  loginProvider: String!\n  phoneNumber: String\n  verifiedPhoneNumber: Boolean!\n  facebookId: String\n  googleId: String\n  kakaoId: String\n  naverId: String\n  nickname: String\n  gender: String\n  birth: String\n  status: String\n  profilePhoto: String\n  lastLat: Float\n  lastLng: Float\n  feeds: [Feed]\n  coupleForPartnerOne: Couple\n  coupleForPartnerTwo: Couple\n  comments: [Comment]\n  createdAt: String!\n}\n\ntype SignUpEndResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype SignUpStartResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype UpdateMyProfileResponse {\n  ok: Boolean!\n  error: String\n}\n\nenum genderOptions {\n  MALE\n  FEMALE\n}\n\nenum statusOptions {\n  HAPPY\n  DEPRESSED\n  MAD\n  ENERGIZED\n  UNCERTAIN\n  PEACEFUL\n  CONFUSED\n}\n\ntype Verification {\n  id: Int!\n  payload: String!\n  key: String!\n  verified: Boolean!\n  createdAt: String!\n}\n"];
+export const typeDefs = ["type CreateChatResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype Mutation {\n  CreateChat(coupleId: Int!): CreateChatResponse!\n  AddComment(feedId: Int!, text: String!): AddCommentResponse!\n  DeleteComment(commentId: Int!): DeleteCommentResponse!\n  CompleteCoupleVerification(phoneNumber: String!, key: String!): CompleteCoupleVerificationResponse!\n  RequestCoupleVerification(partnerPhoneNumber: String!): RequestCoupleVerificationResponse!\n  AddFeed(placeId: Int!, text: String!, feedPicture: String): AddFeedResponse!\n  DeleteFeed(feedId: Int!): DeleteFeedResponse!\n  AddPlace(name: String!, lat: Float!, lng: Float!, address: String!, isVisited: Boolean!): AddPlaceResponse!\n  DeletePlace(placeId: Int!): DeletePlaceResponse!\n  EditPlace(placeId: Int!, name: String, isVisited: Boolean): EditPlaceResponse!\n  FacebookLogin(facebookId: String!, name: String!): FacebookLoginResponse!\n  GoogleLogin(googleId: String!, name: String!, imageUrl: String): GoogleLoginResponse!\n  KakaoLogin(kakaoId: String!, nickname: String!, thumbnail: String): KakaoLoginResponse!\n  Login(username: String!, password: String!): LoginResponse!\n  NaverLogin(naverId: String!, nickname: String!, imageUrl: String): NaverLoginResponse!\n  SignUpEnd(phoneNumber: String!, key: String!): SignUpEndResponse!\n  SignUpStart(username: String!, password: String!, phoneNumber: String!): SignUpStartResponse!\n  UpdateMyProfile(nickname: String, gender: genderOptions, birth: String, status: statusOptions, profilePhoto: String, phoneNumber: String): UpdateMyProfileResponse!\n}\n\ntype GetChatResponse {\n  ok: Boolean!\n  error: String\n  chat: Chat\n}\n\ntype Query {\n  GetChat(chatId: Int!): GetChatResponse!\n  GetComments(feedId: Int!): GetCommentsResponse!\n  GetFeeds(placeId: Int!): GetFeedsResponse!\n  GetPlaces: GetPlacesResponse!\n  GetMyProfile: GetMyProfileResponse!\n}\n\ntype Chat {\n  id: Int!\n  messages: [Message]\n  coupleId: Int!\n  couple: Couple!\n  createdAt: String!\n}\n\ntype Message {\n  id: Int!\n  text: String!\n  chat: Chat!\n  createdAt: String!\n}\n\ntype AddCommentResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype DeleteCommentResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype GetCommentsResponse {\n  ok: Boolean!\n  error: String\n  comments: [Comment]\n}\n\ntype Comment {\n  id: Int!\n  feedId: Int\n  feed: Feed!\n  text: String!\n  user: User!\n  createdAt: String!\n}\n\ntype CompleteCoupleVerificationResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype RequestCoupleVerificationResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype Couple {\n  id: Int!\n  verified: Boolean!\n  partnerOneId: Int!\n  partnerOne: User!\n  partnerTwoId: Int\n  partnerTwo: User\n  firstDate: String\n  chat: Chat\n  places: [Place]\n  feeds: [Feed]\n  coupleVerification: CoupleVerification\n  createdAt: String!\n}\n\ntype CoupleVerification {\n  id: Int!\n  payload: String!\n  key: String!\n  verified: Boolean!\n  couple: Couple!\n  createdAt: String!\n}\n\ntype AddFeedResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype DeleteFeedResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype GetFeedsResponse {\n  ok: Boolean!\n  error: String\n  feeds: [Feed]\n}\n\ntype Feed {\n  id: Int!\n  couple: Couple!\n  userId: Int!\n  user: User!\n  text: String!\n  feedPicture: String\n  comments: [Comment]\n  placeId: Int\n  place: Place!\n  createdAt: String!\n}\n\ntype AddPlaceResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype DeletePlaceResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype EditPlaceResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype GetPlacesResponse {\n  ok: Boolean!\n  error: String\n  places: [Place]\n}\n\ntype Place {\n  id: Int!\n  couple: Couple!\n  name: String!\n  lat: Float!\n  lng: Float!\n  address: String!\n  isVisited: Boolean!\n  feeds: [Feed]\n  createdAt: String!\n}\n\ntype FacebookLoginResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype GetMyProfileResponse {\n  ok: Boolean!\n  error: String\n  user: User\n}\n\ntype GoogleLoginResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype KakaoLoginResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype LoginResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype NaverLoginResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype User {\n  id: Int!\n  username: String\n  password: String\n  loginProvider: String!\n  phoneNumber: String\n  verifiedPhoneNumber: Boolean!\n  facebookId: String\n  googleId: String\n  kakaoId: String\n  naverId: String\n  nickname: String\n  gender: String\n  birth: String\n  status: String\n  profilePhoto: String\n  lastLat: Float\n  lastLng: Float\n  feeds: [Feed]\n  coupleForPartnerOneId: Int\n  coupleForPartnerOne: Couple\n  coupleForPartnerTwoId: Int\n  coupleForPartnerTwo: Couple\n  comments: [Comment]\n  createdAt: String!\n}\n\ntype SignUpEndResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype SignUpStartResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype UpdateMyProfileResponse {\n  ok: Boolean!\n  error: String\n}\n\nenum genderOptions {\n  MALE\n  FEMALE\n}\n\nenum statusOptions {\n  HAPPY\n  DEPRESSED\n  MAD\n  ENERGIZED\n  UNCERTAIN\n  PEACEFUL\n  CONFUSED\n}\n\ntype Verification {\n  id: Int!\n  payload: String!\n  key: String!\n  verified: Boolean!\n  createdAt: String!\n}\n"];
 /* tslint:disable */
 
 export interface Query {
+  GetChat: GetChatResponse;
   GetComments: GetCommentsResponse;
   GetFeeds: GetFeedsResponse;
   GetPlaces: GetPlacesResponse;
   GetMyProfile: GetMyProfileResponse;
+}
+
+export interface GetChatQueryArgs {
+  chatId: number;
 }
 
 export interface GetCommentsQueryArgs {
@@ -16,31 +21,24 @@ export interface GetFeedsQueryArgs {
   placeId: number;
 }
 
-export interface GetCommentsResponse {
+export interface GetChatResponse {
   ok: boolean;
   error: string | null;
-  comments: Array<Comment> | null;
+  chat: Chat | null;
 }
 
-export interface Comment {
+export interface Chat {
   id: number;
-  feedId: number | null;
-  feed: Feed;
-  text: string;
-  user: User;
+  messages: Array<Message> | null;
+  coupleId: number;
+  couple: Couple;
   createdAt: string;
 }
 
-export interface Feed {
+export interface Message {
   id: number;
-  couple: Couple;
-  userId: number;
-  user: User;
   text: string;
-  feedPicture: string | null;
-  comments: Array<Comment> | null;
-  placeId: number | null;
-  place: Place;
+  chat: Chat;
   createdAt: string;
 }
 
@@ -78,24 +76,33 @@ export interface User {
   lastLat: number | null;
   lastLng: number | null;
   feeds: Array<Feed> | null;
+  coupleForPartnerOneId: number | null;
   coupleForPartnerOne: Couple | null;
+  coupleForPartnerTwoId: number | null;
   coupleForPartnerTwo: Couple | null;
   comments: Array<Comment> | null;
   createdAt: string;
 }
 
-export interface Chat {
+export interface Feed {
   id: number;
-  messages: Array<Message> | null;
-  coupleId: number;
   couple: Couple;
+  userId: number;
+  user: User;
+  text: string;
+  feedPicture: string | null;
+  comments: Array<Comment> | null;
+  placeId: number | null;
+  place: Place;
   createdAt: string;
 }
 
-export interface Message {
+export interface Comment {
   id: number;
+  feedId: number | null;
+  feed: Feed;
   text: string;
-  chat: Chat;
+  user: User;
   createdAt: string;
 }
 
@@ -118,6 +125,12 @@ export interface CoupleVerification {
   verified: boolean;
   couple: Couple;
   createdAt: string;
+}
+
+export interface GetCommentsResponse {
+  ok: boolean;
+  error: string | null;
+  comments: Array<Comment> | null;
 }
 
 export interface GetFeedsResponse {

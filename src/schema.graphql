@@ -24,6 +24,20 @@ type Mutation {
   UpdateMyProfile(nickname: String, gender: genderOptions, birth: String, status: statusOptions, profilePhoto: String, phoneNumber: String): UpdateMyProfileResponse!
 }
 
+type GetChatResponse {
+  ok: Boolean!
+  error: String
+  chat: Chat
+}
+
+type Query {
+  GetChat(chatId: Int!): GetChatResponse!
+  GetComments(feedId: Int!): GetCommentsResponse!
+  GetFeeds(placeId: Int!): GetFeedsResponse!
+  GetPlaces: GetPlacesResponse!
+  GetMyProfile: GetMyProfileResponse!
+}
+
 type Chat {
   id: Int!
   messages: [Message]
@@ -53,13 +67,6 @@ type GetCommentsResponse {
   ok: Boolean!
   error: String
   comments: [Comment]
-}
-
-type Query {
-  GetComments(feedId: Int!): GetCommentsResponse!
-  GetFeeds(placeId: Int!): GetFeedsResponse!
-  GetPlaces: GetPlacesResponse!
-  GetMyProfile: GetMyProfileResponse!
 }
 
 type Comment {
@@ -222,7 +229,9 @@ type User {
   lastLat: Float
   lastLng: Float
   feeds: [Feed]
+  coupleForPartnerOneId: Int
   coupleForPartnerOne: Couple
+  coupleForPartnerTwoId: Int
   coupleForPartnerTwo: Couple
   comments: [Comment]
   createdAt: String!
