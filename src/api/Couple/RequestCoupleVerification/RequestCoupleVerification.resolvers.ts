@@ -35,7 +35,8 @@ const resolvers: Resolvers = {
               error: "이미 커플로 등록되어 있습니다."
             };
           } else {
-            // #2. check if existing couple verification exists (remove)
+            // #2. check if existing couple verification exists
+            // remove exisiting couple verification & couple data
             const existingCoupleVerification = await CoupleVerification.findOne(
               {
                 payload: partnerPhoneNumber
