@@ -22,7 +22,7 @@ type Mutation {
   NaverLogin(naverId: String!, nickname: String!, imageUrl: String): NaverLoginResponse!
   SignUpEnd(phoneNumber: String!, key: String!): SignUpEndResponse!
   SignUpStart(username: String!, password: String!, phoneNumber: String!): SignUpStartResponse!
-  UpdateMyProfile(nickname: String, gender: genderOptions, birth: String, status: statusOptions, profilePhoto: String, phoneNumber: String): UpdateMyProfileResponse!
+  UpdateMyProfile(nickname: String, gender: String, birth: String, status: statusOptions, profilePhoto: String, phoneNumber: String): UpdateMyProfileResponse!
 }
 
 type GetChatResponse {
@@ -243,6 +243,7 @@ type User {
   lastLat: Float
   lastLng: Float
   feeds: [Feed]
+  verifiedCouple: Boolean
   coupleForPartnerOneId: Int
   coupleForPartnerOne: Couple
   coupleForPartnerTwoId: Int
@@ -265,11 +266,6 @@ type SignUpStartResponse {
 type UpdateMyProfileResponse {
   ok: Boolean!
   error: String
-}
-
-enum genderOptions {
-  MALE
-  FEMALE
 }
 
 enum statusOptions {

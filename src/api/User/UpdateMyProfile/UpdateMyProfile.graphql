@@ -3,11 +3,6 @@ type UpdateMyProfileResponse {
   error: String
 }
 
-enum genderOptions {
-  MALE
-  FEMALE
-}
-
 enum statusOptions {
   HAPPY
   DEPRESSED
@@ -21,7 +16,7 @@ enum statusOptions {
 type Mutation {
   UpdateMyProfile(
     nickname: String
-    gender: genderOptions
+    gender: String
     birth: String
     status: statusOptions
     profilePhoto: String
