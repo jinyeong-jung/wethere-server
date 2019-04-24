@@ -39,10 +39,12 @@ const resolvers: Resolvers = {
             const existingCoupleVerification = await CoupleVerification.findOne(
               {
                 payload: partnerPhoneNumber
-              }
+              },
+              { relations: ["couple"] }
             );
             if (existingCoupleVerification) {
               existingCoupleVerification.remove();
+              existingCoupleVerification.couple.remove();
             }
 
             // #3. create a new couple verification
