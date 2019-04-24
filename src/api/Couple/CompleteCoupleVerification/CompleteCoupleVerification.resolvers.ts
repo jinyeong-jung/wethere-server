@@ -39,6 +39,7 @@ const resolvers: Resolvers = {
               await couple.save();
 
               // Saving user data
+              user.coupleForPartnerTwoId = couple.id;
               user.coupleForPartnerTwo = couple;
               await user.save();
 
