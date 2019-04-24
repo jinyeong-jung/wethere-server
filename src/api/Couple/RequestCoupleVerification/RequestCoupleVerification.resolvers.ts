@@ -41,8 +41,17 @@ const resolvers: Resolvers = {
                 payload: partnerPhoneNumber
               }
             );
+
+            const coupleToDelete = await Couple.findOne({
+              coupleVerification: existingCoupleVerification
+            });
+
+            if (coupleToDelete) {
+              await coupleToDelete.remove();
+            }
+
             if (existingCoupleVerification) {
-              existingCoupleVerification.remove();
+              await existingCoupleVerification.remove();
             }
 
             // #3. create a new couple verification

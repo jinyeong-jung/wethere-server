@@ -38,9 +38,21 @@ const resolvers: Resolvers = {
               couple.partnerTwo = user;
               await couple.save();
 
+              // Saving partner data
+
+              const partner = await User.findOne({
+                coupleForPartnerOneId: couple.id
+              });
+
+              if (partner) {
+                partner.verifiedCouple = true;
+                await partner.save();
+              }
+
               // Saving user data
               user.coupleForPartnerTwoId = couple.id;
               user.coupleForPartnerTwo = couple;
+              user.verifiedCouple = true;
               await user.save();
 
               return {

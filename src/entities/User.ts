@@ -96,6 +96,9 @@ class User extends BaseEntity {
   @OneToMany(type => Feed, feed => feed.user)
   feeds: Feed[];
 
+  @Column({ type: "boolean", nullable: true, default: false })
+  verifiedCouple: boolean;
+
   @Column({ type: "integer", nullable: true })
   coupleForPartnerOneId: number;
 

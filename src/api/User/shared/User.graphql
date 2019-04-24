@@ -17,6 +17,7 @@ type User {
   lastLat: Float
   lastLng: Float
   feeds: [Feed]
+  verifiedCouple: Boolean
   coupleForPartnerOneId: Int
   coupleForPartnerOne: Couple
   coupleForPartnerTwoId: Int
