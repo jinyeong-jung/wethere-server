@@ -69,15 +69,6 @@ class User extends BaseEntity {
 
   @Column({
     type: "text",
-    enum: [
-      "HAPPY",
-      "DEPRESSED",
-      "MAD",
-      "ENERGIZED",
-      "UNCERTAIN",
-      "PEACEFUL",
-      "CONFUSED"
-    ],
     default: "HAPPY",
     nullable: true
   })

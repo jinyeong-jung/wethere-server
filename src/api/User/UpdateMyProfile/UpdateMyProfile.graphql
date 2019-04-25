@@ -3,22 +3,12 @@ type UpdateMyProfileResponse {
   error: String
 }
 
-enum statusOptions {
-  HAPPY
-  DEPRESSED
-  MAD
-  ENERGIZED
-  UNCERTAIN
-  PEACEFUL
-  CONFUSED
-}
-
 type Mutation {
   UpdateMyProfile(
     nickname: String
     gender: String
     birth: String
-    status: statusOptions
+    status: String
     profilePhoto: String
     phoneNumber: String
   ): UpdateMyProfileResponse!
