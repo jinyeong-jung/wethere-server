@@ -22,7 +22,7 @@ type Mutation {
   NaverLogin(naverId: String!, nickname: String!, imageUrl: String): NaverLoginResponse!
   SignUpEnd(phoneNumber: String!, key: String!): SignUpEndResponse!
   SignUpStart(username: String!, password: String!, phoneNumber: String!): SignUpStartResponse!
-  UpdateMyProfile(nickname: String, gender: String, birth: String, status: statusOptions, profilePhoto: String, phoneNumber: String): UpdateMyProfileResponse!
+  UpdateMyProfile(nickname: String, gender: String, birth: String, status: String, profilePhoto: String, phoneNumber: String): UpdateMyProfileResponse!
 }
 
 type GetChatResponse {
@@ -34,6 +34,7 @@ type GetChatResponse {
 type Query {
   GetChat(chatId: Int!): GetChatResponse!
   GetComments(feedId: Int!): GetCommentsResponse!
+  GetCoupleInfo: GetCoupleInfoResponse!
   GetFeeds(placeId: Int!): GetFeedsResponse!
   GetPlaces: GetPlacesResponse!
   GetMyProfile: GetMyProfileResponse!
@@ -94,6 +95,12 @@ type Comment {
 type CompleteCoupleVerificationResponse {
   ok: Boolean!
   error: String
+}
+
+type GetCoupleInfoResponse {
+  ok: Boolean!
+  error: String
+  couple: Couple
 }
 
 type RequestCoupleVerificationResponse {
@@ -266,16 +273,6 @@ type SignUpStartResponse {
 type UpdateMyProfileResponse {
   ok: Boolean!
   error: String
-}
-
-enum statusOptions {
-  HAPPY
-  DEPRESSED
-  MAD
-  ENERGIZED
-  UNCERTAIN
-  PEACEFUL
-  CONFUSED
 }
 
 type Verification {

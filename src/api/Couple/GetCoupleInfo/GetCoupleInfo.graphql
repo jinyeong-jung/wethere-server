@@ -1,0 +1,9 @@
+type GetCoupleInfoResponse {
+  ok: Boolean!
+  error: String
+  couple: Couple
+}
+
+type Query {
+  GetCoupleInfo: GetCoupleInfoResponse!
+}
