@@ -1,20 +1,30 @@
 import { withFilter } from "graphql-yoga";
 import User from "../../../entities/User";
+import Chat from "../../../entities/Chat";
 
 const resolvers = {
   Subscription: {
     MessageSubscription: {
       subscribe: withFilter(
         (_, __, { pubSub }) => pubSub.asyncIterator("newChatMessage"),
-        (payload, _, { context }) => {
+        async (payload, _, { context }) => {
           const user: User = context.currentUser;
           const {
             MessageSubscription: { coupleId }
           } = payload;
-          return (
-            coupleId === user.coupleForPartnerOneId ||
-            coupleId === user.coupleForPartnerTwoId
-          );
+          try {
+            const chat = await Chat.findOne({ coupleId });
+            if (chat) {
+              return (
+                coupleId === user.coupleForPartnerOneId ||
+                coupleId === user.coupleForPartnerTwoId
+              );
+            } else {
+              return false;
+            }
+          } catch (error) {
+            return false;
+          }
         }
       )
     }
