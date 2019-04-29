@@ -181,7 +181,8 @@ type EditPlaceResponse {
 type GetPlacesResponse {
   ok: Boolean!
   error: String
-  places: [Place]
+  visitedPlaces: [Place]
+  notVisitedPlaces: [Place]
 }
 
 type Place {
