@@ -37,6 +37,7 @@ type Query {
   GetCoupleInfo: GetCoupleInfoResponse!
   GetFeeds(placeId: Int!): GetFeedsResponse!
   GetPlaces: GetPlacesResponse!
+  PlaceDetail(placeId: Int!): PlaceDetailResponse!
   GetMyProfile: GetMyProfileResponse!
 }
 
@@ -183,6 +184,12 @@ type GetPlacesResponse {
   error: String
   visitedPlaces: [Place]
   notVisitedPlaces: [Place]
+}
+
+type PlaceDetailResponse {
+  ok: Boolean!
+  error: String
+  place: Place
 }
 
 type Place {

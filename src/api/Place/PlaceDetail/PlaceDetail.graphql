@@ -1,0 +1,9 @@
+type PlaceDetailResponse {
+  ok: Boolean!
+  error: String
+  place: Place
+}
+
+type Query {
+  PlaceDetail(placeId: Int!): PlaceDetailResponse!
+}
