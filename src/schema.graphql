@@ -35,7 +35,8 @@ type Query {
   GetChat(chatId: Int!): GetChatResponse!
   GetComments(feedId: Int!): GetCommentsResponse!
   GetCoupleInfo: GetCoupleInfoResponse!
-  GetFeeds(placeId: Int!): GetFeedsResponse!
+  GetFeeds: GetFeedsResponse!
+  GetPlaceFeeds(placeId: Int!): GetPlaceFeedsResponse!
   GetPlaces: GetPlacesResponse!
   PlaceDetail(placeId: Int!): PlaceDetailResponse!
   GetMyProfile: GetMyProfileResponse!
@@ -151,8 +152,15 @@ type GetFeedsResponse {
   feeds: [Feed]
 }
 
+type GetPlaceFeedsResponse {
+  ok: Boolean!
+  error: String
+  feeds: [Feed]
+}
+
 type Feed {
   id: Int!
+  coupleId: Int!
   couple: Couple!
   userId: Int!
   user: User!

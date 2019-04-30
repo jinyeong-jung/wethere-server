@@ -1,5 +1,6 @@
 type Feed {
   id: Int!
+  coupleId: Int!
   couple: Couple!
   userId: Int!
   user: User!

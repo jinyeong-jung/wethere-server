@@ -17,6 +17,9 @@ class Feed extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ type: "integer" })
+  coupleId: number;
+
   @ManyToOne(type => Couple, couple => couple.feeds)
   couple: Couple;
 

@@ -1,31 +1,38 @@
+import {
+  GetPlaceFeedsResponse,
+  GetPlaceFeedsQueryArgs
+} from "../../../types/graph";
 import { Resolvers } from "../../../types/resolvers";
 import privateResolver from "../../../utils/privateResolver";
-import { GetFeedsResponse } from "../../../types/graph";
 import User from "../../../entities/User";
-import Couple from "../../../entities/Couple";
 import Feed from "../../../entities/Feed";
+import Couple from "../../../entities/Couple";
 
 const resolvers: Resolvers = {
   Query: {
-    GetFeeds: privateResolver(
-      async (_, __, { req }): Promise<GetFeedsResponse> => {
+    GetPlaceFeeds: privateResolver(
+      async (
+        _,
+        args: GetPlaceFeedsQueryArgs,
+        { req }
+      ): Promise<GetPlaceFeedsResponse> => {
         const user: User = req.user;
         try {
-          const coupleOne = await Couple.findOne(
-            { partnerOne: user },
-            { relations: ["feeds"] }
-          );
-          const coupleTwo = await Couple.findOne(
-            { partnerTwo: user },
-            { relations: ["feeds"] }
-          );
+          const coupleOne = await Couple.findOne({
+            partnerOne: user
+          });
+
+          const coupleTwo = await Couple.findOne({
+            partnerTwo: user
+          });
+
           const couple = coupleOne || coupleTwo;
 
           const feeds = await Feed.find({
-            couple
+            couple,
+            placeId: args.placeId
           });
-
-          if (couple) {
+          if (feeds) {
             return {
               ok: true,
               error: null,
@@ -34,7 +41,7 @@ const resolvers: Resolvers = {
           } else {
             return {
               ok: false,
-              error: "피드가 없습니다",
+              error: "피드를 불러올 수 없습니다.",
               feeds: null
             };
           }
