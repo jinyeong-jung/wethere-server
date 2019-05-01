@@ -7,6 +7,7 @@ import {
 import User from "../../../entities/User";
 import Place from "../../../entities/Place";
 import Couple from "../../../entities/Couple";
+import Feed from "../../../entities/Feed";
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -23,12 +24,21 @@ const resolvers: Resolvers = {
             { relations: ["couple"] }
           );
 
+          const feeds = await Feed.find({ placeId: args.placeId });
+
           if (place) {
             const coupleOne = await Couple.findOne({ partnerOne: user });
             const coupleTwo = await Couple.findOne({ partnerTwo: user });
             const couple = coupleOne || coupleTwo;
 
             if (place.couple.id === couple!.id) {
+              if (feeds) {
+                feeds.map(async feed => {
+                  if (feed) {
+                    await feed.remove();
+                  }
+                });
+              }
               await place.remove();
               return {
                 ok: true,

@@ -6,6 +6,7 @@ import {
 } from "../../../types/graph";
 import User from "../../../entities/User";
 import Feed from "../../../entities/Feed";
+import Comment from "../../../entities/Comment";
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -23,8 +24,18 @@ const resolvers: Resolvers = {
             },
             { relations: ["user"] }
           );
+          const comments = await Comment.find({
+            feedId: args.feedId
+          });
           if (feed) {
             if (feed.user.id === user.id) {
+              if (comments) {
+                comments.map(async comment => {
+                  if (comment) {
+                    await comment.remove();
+                  }
+                });
+              }
               await feed.remove();
               return {
                 ok: true,
