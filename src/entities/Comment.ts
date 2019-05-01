@@ -23,6 +23,9 @@ class Comment extends BaseEntity {
   @Column({ type: "text" })
   text: string;
 
+  @Column({ type: "integer" })
+  userId: number;
+
   @ManyToOne(type => User, user => user.comments)
   user: User;
 
