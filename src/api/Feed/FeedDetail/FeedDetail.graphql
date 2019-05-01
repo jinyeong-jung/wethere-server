@@ -1,0 +1,9 @@
+type FeedDetailResponse {
+  ok: Boolean!
+  error: String
+  feed: Feed
+}
+
+type Query {
+  FeedDetail(feedId: Int!): FeedDetailResponse!
+}
