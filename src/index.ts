@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config({ path: "../.env" });
 
 import { Options } from "graphql-yoga";
 import { createConnection } from "typeorm";
@@ -19,7 +19,6 @@ const appOptions: Options = {
   subscriptions: {
     path: SUBSCRIPTION_ENDPOINT,
     onConnect: async connectionParams => {
-      console.log(connectionParams);
       const token = connectionParams["X-JWT"];
       if (token) {
         const user = await decodeJWT(token);

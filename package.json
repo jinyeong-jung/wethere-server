@@ -13,20 +13,17 @@
     "@types/jsonwebtoken": "^8.3.2",
     "@types/morgan": "^1.7.35",
     "@types/node": "^11.13.2",
-    "@types/twilio": "^0.0.10",
-    "babel-runtime": "^6.26.0",
-    "gql-merge": "^0.0.6",
-    "graphql-to-typescript": "^0.1.2",
-    "nodemon": "^1.18.11",
-    "ts-node": "7.0.1",
-    "tslint-config-prettier": "1.17.0",
-    "typescript": "3.2.2"
+    "@types/twilio": "^0.0.10"
   },
   "scripts": {
     "predev": "yarn run types",
     "dev": "cd src && nodemon --exec ts-node index.ts -e ts,graphql",
     "pretypes": "gql-merge --out-file ./src/schema.graphql ./src/api/**/*.graphql",
-    "types": "graphql-to-typescript ./src/schema.graphql ./src/types/graph.d.ts"
+    "types": "graphql-to-typescript ./src/schema.graphql ./src/types/graph.d.ts",
+    "prebuild": "rm -rf dist",
+    "build": "tsc",
+    "postbuild": "yarn copy src/api/**/*.graphql dist/api",
+    "start": "cd dist && node ."
   },
   "dependencies": {
     "bcrypt": "^3.0.6",
@@ -41,6 +38,14 @@
     "morgan": "^1.9.1",
     "pg": "^7.9.0",
     "twilio": "3.27.1",
-    "typeorm": "0.2.9"
+    "typeorm": "0.2.9",
+    "babel-runtime": "^6.26.0",
+    "copy": "0.3.2",
+    "gql-merge": "^0.0.6",
+    "graphql-to-typescript": "^0.1.2",
+    "nodemon": "^1.18.11",
+    "ts-node": "7.0.1",
+    "tslint-config-prettier": "1.17.0",
+    "typescript": "3.2.2"
   }
 }
